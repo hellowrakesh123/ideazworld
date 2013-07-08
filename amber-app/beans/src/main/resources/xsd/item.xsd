@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="http://www.ideazworld.amber.com/schema/beans/item"
+	targetNamespace="http://www.ideazworld.amber.com/schema/beans/item" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:core="http://www.ideazworld.amber.com/schema/beans/core"
+	xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" jaxb:version="2.1"
+	xmlns:annox="http://annox.dev.java.net" jaxb:extensionBindingPrefixes="annox"
+	xmlns:sd="http://annox.dev.java.net/org.springframework.data.annotation">
+
+	<xsd:import namespace="http://www.ideazworld.amber.com/schema/beans/core" schemaLocation="core.xsd"/>
+	
+	<xsd:complexType name="item">
+		<xsd:complexContent>
+			<xsd:extension base="core:base-ref-object">
+				<xsd:sequence>
+					<xsd:element name="description" type="xsd:string" />
+					<xsd:element name="market-price" type="xsd:int" />
+					<xsd:element name="expected-price" type="xsd:int" />
+					<xsd:element name="location" type="core:location" />
+					<xsd:element name="contact-number" type="xsd:int" />
+					<xsd:element name="share-contact" type="xsd:boolean" />
+					<xsd:element name="status" type="item-status" />
+					<xsd:element name="status-message" type="xsd:string" />
+					<xsd:element name="attachments" type="attachment" minOccurs="0" maxOccurs="unbounded" />
+					<xsd:element name="tags" type="xsd:string" minOccurs="0" maxOccurs="unbounded" />
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+	<xsd:simpleType name="item-status">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="NEW"/>
+            <xsd:enumeration value="SOLD"/>
+            <xsd:enumeration value="DISABLED"/>
+            <xsd:enumeration value="BLOCKED"/>
+            <xsd:enumeration value="RETIRED"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    
+	<xsd:complexType name="attachment">
+		<xsd:complexContent>
+			<xsd:extension base="core:base-object">
+				<xsd:sequence>
+					<xsd:element name="name" type="xsd:string" />
+					<xsd:element name="description" type="xsd:string" />
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+</xsd:schema>

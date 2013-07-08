@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="http://www.ideazworld.amber.com/schema/beans/core"
+	targetNamespace="http://www.ideazworld.amber.com/schema/beans/core" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" jaxb:version="2.1"
+	xmlns:annox="http://annox.dev.java.net" jaxb:extensionBindingPrefixes="annox"
+	xmlns:sd="http://annox.dev.java.net/org.springframework.data.annotation">
+
+	<xsd:complexType name="base-object" abstract="true">
+		<xsd:sequence>
+			<xsd:element name="id" type="xsd:int" />
+			<xsd:element name="created-time" type="date-time" />
+			<xsd:element name="created-by" type="xsd:string" />
+			<xsd:element name="updated-time" type="date-time" />
+			<xsd:element name="updated-by" type="xsd:string" />
+			<xsd:element name="lock-version" type="xsd:int" />
+			<xsd:element name="active" type="xsd:boolean" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="ref">
+		<xsd:sequence>
+			<xsd:element name="name" type="xsd:string" />
+			<xsd:element name="ref-id" type="xsd:string" />
+			<xsd:element name="ref-type" type="ref-type" />
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="base-ref-object" abstract="true">
+		<xsd:complexContent>
+			<xsd:extension base="base-object">
+				<xsd:sequence>
+					<xsd:element name="ref" type="ref" />
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+	<xsd:simpleType name="ref-type">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="ITEM"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    
+	<xsd:complexType name="date-time">
+		<xsd:annotation>
+			<xsd:appinfo>
+				<jaxb:class ref="java.util.Date" />
+			</xsd:appinfo>
+		</xsd:annotation>
+	</xsd:complexType>
+
+	<xsd:complexType name="user">
+		<xsd:complexContent>
+			<xsd:extension base="base-object">
+				<xsd:sequence>
+					<xsd:element name="user-id" type="xsd:string" />
+					<xsd:element name="name" type="xsd:string" />
+					<xsd:element name="location" type="location" />
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+	<xsd:complexType name="location">
+		<xsd:complexContent>
+			<xsd:extension base="base-object">
+				<xsd:sequence>
+					<xsd:element name="address" type="xsd:string" />
+					<xsd:element name="locality" type="xsd:string" />
+					<xsd:element name="land-mark" type="xsd:string" />
+					<xsd:element name="city" type="xsd:string" />
+					<xsd:element name="state" type="xsd:string" />
+					<xsd:element name="country" type="xsd:string" />
+					<xsd:element name="zip-code" type="xsd:int" />
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+	<xsd:complexType name="search-request">
+		<xsd:sequence>
+			<xsd:element name="simple-hints" type="simple-element"
+				minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element name="range-hints" type="range-element"
+				minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element name="list-hints" type="list-element"
+				minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element name="page" type="xsd:int" />
+			<xsd:element name="page-size" type="xsd:int" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="element" abstract="true">
+		<xsd:sequence>
+			<xsd:element name="key" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="simple-element">
+		<xsd:complexContent>
+			<xsd:extension base="element">
+				<xsd:sequence>
+					<xsd:element name="value" type="xsd:string" />
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="range-element">
+		<xsd:complexContent>
+			<xsd:extension base="element">
+				<xsd:sequence>
+					<xsd:element name="from-value" type="xsd:string" />
+					<xsd:element name="to-value" type="xsd:string" />
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="list-element">
+		<xsd:complexContent>
+			<xsd:extension base="element">
+				<xsd:sequence>
+					<xsd:element name="values" type="xsd:string" minOccurs="0"
+						maxOccurs="unbounded" />
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+</xsd:schema>
