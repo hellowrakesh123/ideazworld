@@ -1,0 +1,11 @@
+.metadata
+target
+bin
+test-output
+*/**/target
+build.log
+*.log
+*.class
+.project
+.classpath
+.settings
