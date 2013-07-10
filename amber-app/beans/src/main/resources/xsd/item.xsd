@@ -13,10 +13,14 @@
 			<xsd:extension base="core:base-ref-object">
 				<xsd:sequence>
 					<xsd:element name="description" type="xsd:string" />
+					<xsd:element name="item-type" type="item-type" />
+					<xsd:element name="item-condition" type="item-condition" />
+					<xsd:element name="category" type="xsd:string" />
+					<xsd:element name="sub-category" type="xsd:string" />
 					<xsd:element name="market-price" type="xsd:int" />
 					<xsd:element name="expected-price" type="xsd:int" />
 					<xsd:element name="location" type="core:location" />
-					<xsd:element name="contact-number" type="xsd:int" />
+					<xsd:element name="brand" type="brand" />
 					<xsd:element name="share-contact" type="xsd:boolean" />
 					<xsd:element name="status" type="item-status" />
 					<xsd:element name="status-message" type="xsd:string" />
@@ -27,6 +31,13 @@
 		</xsd:complexContent>
 	</xsd:complexType>
 	
+	<xsd:complexType name="brand">
+		<xsd:sequence>
+			<xsd:element name="name" type="xsd:string" />
+			<xsd:element name="year" type="xsd:int" />
+		</xsd:sequence>
+	</xsd:complexType>
+	
 	<xsd:simpleType name="item-status">
         <xsd:restriction base="xsd:string">
             <xsd:enumeration value="NEW"/>
@@ -34,6 +45,18 @@
             <xsd:enumeration value="DISABLED"/>
             <xsd:enumeration value="BLOCKED"/>
             <xsd:enumeration value="RETIRED"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    
+	<xsd:simpleType name="item-condition">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="NEW"/>
+            <xsd:enumeration value="LIKE_NEW"/>
+            <xsd:enumeration value="USED"/>
+            <xsd:enumeration value="NEVER_USED"/>
+            <xsd:enumeration value="DECENT"/>
+            <xsd:enumeration value="WORN"/>
+            <xsd:enumeration value="NOT_BAD"/>
         </xsd:restriction>
     </xsd:simpleType>
     
@@ -47,4 +70,10 @@
 			</xsd:extension>
 		</xsd:complexContent>
 	</xsd:complexType>
+	
+	<xsd:simpleType name="item-type">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="BOOK"/>
+        </xsd:restriction>
+    </xsd:simpleType>
 </xsd:schema>

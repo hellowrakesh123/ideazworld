@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="http://www.ideazworld.amber.com/schema/beans/book"
+	targetNamespace="http://www.ideazworld.amber.com/schema/beans/book" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:core="http://www.ideazworld.amber.com/schema/beans/core"
+	xmlns:item="http://www.ideazworld.amber.com/schema/beans/item"
+	xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" jaxb:version="2.1"
+	xmlns:annox="http://annox.dev.java.net" jaxb:extensionBindingPrefixes="annox"
+	xmlns:sd="http://annox.dev.java.net/org.springframework.data.annotation">
+
+	<xsd:import namespace="http://www.ideazworld.amber.com/schema/beans/core" schemaLocation="core.xsd"/>
+	<xsd:import namespace="http://www.ideazworld.amber.com/schema/beans/item" schemaLocation="item.xsd"/>
+	
+	<xsd:complexType name="book">
+		<xsd:complexContent>
+			<xsd:extension base="item:item">
+				<xsd:sequence>
+					<xsd:element name="isbn" type="xsd:string" />
+					<xsd:element name="language" type="xsd:string" />
+					<xsd:element name="subject" type="xsd:string" />
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+	<xsd:complexType name="publication-brand">
+		<xsd:complexContent>
+			<xsd:extension base="item:brand">
+				<xsd:sequence>
+					<xsd:element name="author" type="xsd:string" />
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+</xsd:schema>

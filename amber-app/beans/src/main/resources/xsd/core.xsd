@@ -56,6 +56,9 @@
 					<xsd:element name="user-id" type="xsd:string" />
 					<xsd:element name="name" type="xsd:string" />
 					<xsd:element name="location" type="location" />
+					<xsd:element name="email" type="xsd:string" />
+					<xsd:element name="contact-number" type="xsd:int" />
+					<xsd:element name="share-contact" type="xsd:boolean" />
 				</xsd:sequence>
 			</xsd:extension>
 		</xsd:complexContent>
@@ -77,6 +80,21 @@
 		</xsd:complexContent>
 	</xsd:complexType>
 	
+	<xsd:complexType name="meta-data">
+		<xsd:sequence>
+			<xsd:element name="name" type="xsd:string" />
+			<xsd:element name="description" type="xsd:string" />
+			<xsd:element name="type" type="meta-data-type" />
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:simpleType name="meta-data-type">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="CATEGORY"/>
+            <xsd:enumeration value="SUB_CATEGORY"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    
 	<xsd:complexType name="search-request">
 		<xsd:sequence>
 			<xsd:element name="simple-hints" type="simple-element"
