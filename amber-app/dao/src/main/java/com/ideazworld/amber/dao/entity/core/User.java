@@ -1,4 +1,4 @@
-package com.ideazworld.amber.dao.entity;
+package com.ideazworld.amber.dao.entity.core;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -6,13 +6,15 @@ import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.Type;
 
+import com.ideazworld.amber.dao.entity.AbstractBaseEntity;
+
 
 /**
  * The persistent class for the user database table.
  * 
  */
 @Entity
-public class User extends AbstractEntity {
+public class User extends AbstractBaseEntity {
 	private static final long serialVersionUID = 1L;
 
 	private String email;

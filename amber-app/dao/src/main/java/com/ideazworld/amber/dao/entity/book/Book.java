@@ -1,8 +1,10 @@
-package com.ideazworld.amber.dao.entity;
+package com.ideazworld.amber.dao.entity.book;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
+
+import com.ideazworld.amber.dao.entity.item.Item;
 
 
 /**

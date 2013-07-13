@@ -1,6 +1,8 @@
-package com.ideazworld.amber.dao.entity;
+package com.ideazworld.amber.dao.entity.item;
 
 import javax.persistence.Entity;
+
+import com.ideazworld.amber.dao.entity.AbstractPkEntity;
 
 
 /**

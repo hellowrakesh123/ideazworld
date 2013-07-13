@@ -8,20 +8,13 @@ import com.amber.ideazworld.commons.model.RefType;
 
 @MappedSuperclass
 @SuppressWarnings("serial")
-public abstract class AbstractRefEntity extends AbstractEntity {
+public abstract class AbstractRefEntity extends AbstractBaseEntity {
 
-	private String name;
-    private String ref;
+	private String ref;
     @Enumerated(EnumType.STRING)
     private RefType refType;
 	
-    public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getRef() {
+    public String getRef() {
 		return ref;
 	}
 	public void setRef(String ref) {

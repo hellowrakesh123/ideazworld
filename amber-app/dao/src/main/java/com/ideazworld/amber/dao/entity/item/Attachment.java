@@ -1,4 +1,4 @@
-package com.ideazworld.amber.dao.entity;
+package com.ideazworld.amber.dao.entity.item;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -6,13 +6,15 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 
+import com.ideazworld.amber.dao.entity.AbstractBaseEntity;
+
 
 /**
  * The persistent class for the attachment database table.
  * 
  */
 @Entity
-public class Attachment extends AbstractEntity {
+public class Attachment extends AbstractBaseEntity {
 	/**
 	 * 
 	 */

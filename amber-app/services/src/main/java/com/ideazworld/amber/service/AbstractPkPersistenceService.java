@@ -6,22 +6,22 @@ import java.util.List;
 import javax.validation.constraints.NotNull;
 
 import org.apache.commons.collections.IteratorUtils;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.amber.ideazworld.schema.beans.core.BaseObject;
+import com.amber.ideazworld.schema.beans.core.IdObject;
 import com.ideazworld.amber.converter.Converter;
-import com.ideazworld.amber.dao.entity.AbstractEntity;
+import com.ideazworld.amber.dao.entity.AbstractPkEntity;
+import com.ideazworld.amber.dao.repository.BaseRepository;
 import com.ideazworld.amber.service.exception.InvalidOperationException;
 
 @Transactional(readOnly = true)
-public abstract class AbstractPersistenceService<T extends BaseObject, C extends Converter<T, E>, E extends AbstractEntity, I extends Serializable, R extends JpaRepository<E, I>>
+public abstract class AbstractPkPersistenceService<T extends IdObject, C extends Converter<T, E>, E extends AbstractPkEntity, I extends Serializable, R extends BaseRepository<E, I>>
 		implements PersistenceService<T, E, I> {
 
 	protected final R repository;
 	protected final Converter<T, E> converter;
 
-	public AbstractPersistenceService(Converter<T, E> converter, R repository) {
+	public AbstractPkPersistenceService(Converter<T, E> converter, R repository) {
 		this.converter = converter;
 		this.repository = repository;
 	}
@@ -57,7 +57,7 @@ public abstract class AbstractPersistenceService<T extends BaseObject, C extends
 			throw new InvalidOperationException(
 					"Error while performing update operation, only existing objects can be updated.");
 		}
-		repository.save(converter.convertTo(obj));
+		save(obj);
 	}
 
 	@Transactional(readOnly = false)

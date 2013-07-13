@@ -15,6 +15,7 @@
 		<xsd:complexContent>
 			<xsd:extension base="id-object">
 				<xsd:sequence>
+					<xsd:element name="name" type="xsd:string" />
 					<xsd:element name="created-time" type="date-time" />
 					<xsd:element name="created-by" type="xsd:string" />
 					<xsd:element name="updated-time" type="date-time" />
@@ -28,7 +29,6 @@
 
 	<xsd:complexType name="ref">
 		<xsd:sequence>
-			<xsd:element name="name" type="xsd:string" />
 			<xsd:element name="ref-id" type="xsd:string" />
 			<xsd:element name="ref-type" type="ref-type" />
 		</xsd:sequence>

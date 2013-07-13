@@ -1,4 +1,4 @@
-package com.ideazworld.amber.dao.entity;
+package com.ideazworld.amber.dao.entity.core;
 
 import java.util.List;
 
@@ -6,13 +6,16 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
+import com.ideazworld.amber.dao.entity.AbstractBaseEntity;
+import com.ideazworld.amber.dao.entity.item.Item;
+
 
 /**
  * The persistent class for the location database table.
  * 
  */
 @Entity
-public class Location extends AbstractEntity {
+public class Location extends AbstractBaseEntity {
 	private static final long serialVersionUID = 1L;
 
 	private String address;

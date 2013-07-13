@@ -9,7 +9,7 @@ import org.hibernate.annotations.Type;
 
 @MappedSuperclass
 @SuppressWarnings("serial")
-public abstract class AbstractEntity extends AbstractPkEntity {
+public abstract class AbstractBaseEntity extends AbstractPkEntity {
 
 	private String createdBy;
 	private Timestamp createdTime;

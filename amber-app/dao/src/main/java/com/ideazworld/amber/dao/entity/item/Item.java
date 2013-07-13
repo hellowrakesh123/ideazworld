@@ -1,4 +1,4 @@
-package com.ideazworld.amber.dao.entity;
+package com.ideazworld.amber.dao.entity.item;
 
 import java.util.List;
 
@@ -19,6 +19,9 @@ import org.hibernate.annotations.Type;
 
 import com.amber.ideazworld.commons.model.ItemStatusType;
 import com.amber.ideazworld.commons.model.ItemType;
+import com.ideazworld.amber.dao.entity.AbstractRefEntity;
+import com.ideazworld.amber.dao.entity.core.Location;
+import com.ideazworld.amber.dao.entity.core.Tag;
 
 
 /**
@@ -34,6 +37,8 @@ public abstract class Item extends AbstractRefEntity {
 	 */
 	private static final long serialVersionUID = 8142778816915825675L;
 
+	private String name;
+	
 	private String description;
 	
 	@Enumerated(EnumType.STRING)
@@ -82,6 +87,14 @@ public abstract class Item extends AbstractRefEntity {
 				}
 			)
 	private List<Tag> tags;
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 
 	public String getDescription() {
 		return description;

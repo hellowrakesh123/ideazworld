@@ -1,4 +1,4 @@
-package com.ideazworld.amber.dao.entity;
+package com.ideazworld.amber.dao.entity.item;
 
 import java.util.List;
 
@@ -12,6 +12,7 @@ import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 
 import com.amber.ideazworld.commons.model.ItemType;
+import com.ideazworld.amber.dao.entity.AbstractPkEntity;
 
 
 /**

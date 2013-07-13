@@ -1,7 +1,10 @@
 package com.ideazworld.amber.converter;
 
+import java.util.UUID;
+
 import org.dozer.Mapper;
 
+import com.amber.ideazworld.commons.model.RefType;
 import com.amber.ideazworld.schema.beans.core.BaseRefObject;
 import com.amber.ideazworld.schema.beans.core.Ref;
 import com.ideazworld.amber.dao.entity.AbstractRefEntity;
@@ -29,8 +32,10 @@ public abstract class AbstractRefConverter<T extends BaseRefObject, V extends Ab
 			if(t.getRef() != null) {
 				Ref ref = t.getRef();
 				v.setRef(ref.getRefId());
-				v.setName(ref.getName());
 				v.setRefType(ref.getRefType());
+			} else {
+				v.setRef(UUID.randomUUID().toString());
+				v.setRefType(RefType.fromValue(t.getClass().getSimpleName().toUpperCase()));
 			}
 		}
 		return v;
@@ -42,7 +47,6 @@ public abstract class AbstractRefConverter<T extends BaseRefObject, V extends Ab
 		if(v != null) {
 			t = mapper.map(v, tClazz);
 			Ref ref = new Ref();
-			ref.setName(v.getName());
 			ref.setRefId(v.getRef());
 			ref.setRefType(v.getRefType());
 			t.setRef(ref);

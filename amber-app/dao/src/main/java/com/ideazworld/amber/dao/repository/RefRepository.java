@@ -9,5 +9,5 @@ import com.ideazworld.amber.dao.entity.AbstractRefEntity;
 @NoRepositoryBean
 public interface RefRepository<E extends AbstractRefEntity, I extends Serializable> extends BaseRepository<E, I> {
 
-	public E findRef(String ref);
+	public E findByRef(String ref);
 }

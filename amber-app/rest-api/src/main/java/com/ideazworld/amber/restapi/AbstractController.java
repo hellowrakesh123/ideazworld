@@ -14,10 +14,10 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import com.amber.ideazworld.schema.beans.core.BaseObject;
-import com.ideazworld.amber.dao.entity.AbstractEntity;
+import com.ideazworld.amber.dao.entity.AbstractBaseEntity;
 import com.ideazworld.amber.service.PersistenceService;
 
-public abstract class AbstractController<T extends BaseObject, E extends AbstractEntity, I extends Serializable, S extends PersistenceService<T, E, I>> {
+public abstract class AbstractController<T extends BaseObject, E extends AbstractBaseEntity, I extends Serializable, S extends PersistenceService<T, E, I>> {
 
 	protected final String resourceName;
 	protected final S service;

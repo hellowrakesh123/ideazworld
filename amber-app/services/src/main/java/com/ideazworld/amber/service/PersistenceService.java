@@ -3,10 +3,10 @@ package com.ideazworld.amber.service;
 import java.io.Serializable;
 import java.util.List;
 
-import com.amber.ideazworld.schema.beans.core.BaseObject;
-import com.ideazworld.amber.dao.entity.AbstractEntity;
+import com.amber.ideazworld.schema.beans.core.IdObject;
+import com.ideazworld.amber.dao.entity.AbstractPkEntity;
 
-public interface PersistenceService<T extends BaseObject, E extends AbstractEntity, I extends Serializable> {
+public interface PersistenceService<T extends IdObject, E extends AbstractPkEntity, I extends Serializable> {
 
 	public T findById(I id);
 

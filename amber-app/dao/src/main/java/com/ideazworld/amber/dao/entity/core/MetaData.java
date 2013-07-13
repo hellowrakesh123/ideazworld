@@ -1,10 +1,11 @@
-package com.ideazworld.amber.dao.entity;
+package com.ideazworld.amber.dao.entity.core;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 
 import com.amber.ideazworld.commons.model.MetadataType;
+import com.ideazworld.amber.dao.entity.AbstractPkEntity;
 
 
 /**
