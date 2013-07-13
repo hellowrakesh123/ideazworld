@@ -87,7 +87,7 @@
 				<exclusions>
 					<exclusion>
 						<groupId>commons-logging</groupId>
-        				<artifactId>commons-logging</artifactId>
+						<artifactId>commons-logging</artifactId>
 					</exclusion>
 				</exclusions>
 			</dependency>
@@ -280,7 +280,7 @@
 				<exclusions>
 					<exclusion>
 						<groupId>javax.servlet</groupId>
-      					<artifactId>servlet-api</artifactId>
+						<artifactId>servlet-api</artifactId>
 					</exclusion>
 				</exclusions>
 			</dependency>
@@ -303,7 +303,7 @@
 				<exclusions>
 					<exclusion>
 						<groupId>commons-logging</groupId>
-        				<artifactId>commons-logging</artifactId>
+						<artifactId>commons-logging</artifactId>
 					</exclusion>
 				</exclusions>
 			</dependency>
