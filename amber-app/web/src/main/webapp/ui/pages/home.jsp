@@ -18,9 +18,9 @@
 		<nav>
 			<ul id="menu">
 				<li class="menu_active nav1"><a href="#page_Home">Home </a></li>
-				<li class="nav2"><a href="#page_News">News </a></li>
-				<li class="nav3"><a href="#page_Services">Services </a></li>
-				<li class="nav4"><a href="#page_Products">Products </a></li>
+				<li class="nav2"><a href="#page_FindBooks">Find Books </a></li>
+				<li class="nav3"><a href="#page_GiveBooks">Give Books </a></li>
+				<li class="nav4"><a href="#page_comingSoon">Coming Soon </a></li>
 				<li class="nav5"><a href="#page_FAQ">FAQ </a></li>
 				<li class="nav6"><a href="#page_Contacts">Contacts </a></li>
 			</ul>
@@ -65,7 +65,7 @@
 						<div class="ban3">
 							<div class="pad">
 								<h2>Our<strong>&nbsp;</strong><span>Strategy</span></h2>
-								<p>This website template has several pages: <a href="#page_Home">Home</a>, <a href="#page_News">News</a>, <a href="#page_Services">Services</a>, <a href="#page_Products">Products</a>, <a href="#page_FAQ">faq</a>, <a href="#page_Contacts">Contacts</a> (note that contact us form – doesn’t work).</p>
+								<p>This website template has several pages: <a href="#page_Home">Home</a>, <a href="#page_FindBooks">News</a>, <a href="#page_GiveBooks">Services</a>, <a href="#page_comingSoon">Products</a>, <a href="#page_FAQ">faq</a>, <a href="#page_Contacts">Contacts</a> (note that contact us form – doesn’t work).</p>
 								<div class="center">
 									<a href="#" class="button1">Read More</a>
 									<div class="button1_shadow"></div>
@@ -76,8 +76,8 @@
 					</div>
 				</div>
 			</div>
-			<div id="page_News">
-				<h2>Latest News &amp; Events</h2>
+			<div id="page_FindBooks">
+				<h2>Find Books</h2>
 				<div class="box1_bot">
 					<div class="box1_left">
 						<div class="box1_right">
@@ -99,7 +99,7 @@
 					</div>
 				</div>
 			</div>
-			<div id="page_Services">
+			<div id="page_GiveBooks">
 				<h2>Our Services</h2>
 				<div class="wrapper">
 					<div class="col2">
@@ -174,8 +174,8 @@
 					</div>
 				</div>
 			</div>
-			<div id="page_Products">
-				<h2>Products</h2>
+			<div id="page_comingSoon">
+				<h2>Coming Soon</h2>
 				<div class="wrapper">
 					<div class="col1">
 						<div class="box1_bot">
