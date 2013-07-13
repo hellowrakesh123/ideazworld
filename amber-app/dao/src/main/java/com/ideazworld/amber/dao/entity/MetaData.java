@@ -15,10 +15,20 @@ import com.amber.ideazworld.schema.beans.core.MetaDataType;
 public class MetaData extends AbstractPkEntity {
 	private static final long serialVersionUID = 1L;
 
+	private String name;
+	
 	private String description;
 
 	@Enumerated(EnumType.STRING)
 	private MetaDataType type;
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 
 	public String getDescription() {
 		return description;

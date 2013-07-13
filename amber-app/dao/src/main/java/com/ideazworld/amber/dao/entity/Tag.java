@@ -1,11 +1,6 @@
 package com.ideazworld.amber.dao.entity;
 
-import java.util.List;
-
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 
 
 /**
@@ -16,25 +11,13 @@ import javax.persistence.ManyToMany;
 public class Tag extends AbstractPkEntity {
 	private static final long serialVersionUID = 1L;
 
-	//bi-directional many-to-many association to Item
-	@ManyToMany
-	@JoinTable(
-		name="item_tags"
-		, joinColumns={
-			@JoinColumn(name="tag_name")
-			}
-		, inverseJoinColumns={
-			@JoinColumn(name="item_id")
-			}
-		)
-	private List<Item> items;
+	private String name;
 
-	public List<Item> getItems() {
-		return this.items;
+	public String getName() {
+		return name;
 	}
 
-	public void setItems(List<Item> items) {
-		this.items = items;
+	public void setName(String name) {
+		this.name = name;
 	}
-
 }

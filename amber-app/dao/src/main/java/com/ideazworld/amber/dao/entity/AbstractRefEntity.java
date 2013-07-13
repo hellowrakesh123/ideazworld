@@ -7,12 +7,9 @@ import javax.persistence.MappedSuperclass;
 import com.amber.ideazworld.schema.beans.core.RefType;
 
 @MappedSuperclass
+@SuppressWarnings("serial")
 public abstract class AbstractRefEntity extends AbstractEntity {
 
-	/**
-	 * 
-	 */
-	protected static final long serialVersionUID = 4103721502408129883L;
 	private String name;
     private String ref;
     @Enumerated(EnumType.STRING)

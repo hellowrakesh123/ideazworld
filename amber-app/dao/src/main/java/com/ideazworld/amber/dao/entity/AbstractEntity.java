@@ -1,27 +1,23 @@
 package com.ideazworld.amber.dao.entity;
 
-import static javax.persistence.GenerationType.IDENTITY;
-
 import java.sql.Timestamp;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.Version;
+
+import org.hibernate.annotations.Type;
 
 @MappedSuperclass
+@SuppressWarnings("serial")
 public abstract class AbstractEntity extends AbstractPkEntity {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 4103721502408129883L;
-	@Id
-	@GeneratedValue(strategy = IDENTITY)
 	private String createdBy;
 	private Timestamp createdTime;
 	private String updatedBy;
 	private Timestamp updatedTime;
+	@Version
 	private int lockVersion;
+	@Type(type = "org.hibernate.type.NumericBooleanType")
 	private boolean active;
 	
 	public String getCreatedBy() {

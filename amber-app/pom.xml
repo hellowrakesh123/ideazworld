@@ -69,7 +69,7 @@
 							<orderFile>descending</orderFile>
 							<onError>continue</onError>
 							<fileset>
-								<basedir>setup/db/ddl/rollback/</basedir>
+								<basedir>setup/db/schema/rollback/</basedir>
 								<includes>
 									<include>*.sql</include>
 								</includes>
@@ -87,7 +87,7 @@
 							<printResultSet>true</printResultSet>
 							<orderFile>ascending</orderFile>
 							<fileset>
-								<basedir>setup/db/ddl/create/</basedir>
+								<basedir>setup/db/schema/create/</basedir>
 								<includes>
 									<include>*.sql</include>
 								</includes>

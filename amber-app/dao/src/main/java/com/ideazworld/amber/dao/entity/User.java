@@ -1,7 +1,10 @@
 package com.ideazworld.amber.dao.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
+import org.hibernate.annotations.Type;
 
 
 /**
@@ -16,14 +19,14 @@ public class User extends AbstractEntity {
 	
 	private int contactNumber;
 
-	private int lockVersion;
-
 	private String name;
 
-	private byte shareContact;
+	@Type(type = "org.hibernate.type.NumericBooleanType")
+	private boolean shareContact;
 
 	//bi-directional many-to-one association to Location
 	@ManyToOne
+	@JoinColumn(name="location_id")
 	private Location location;
 
 	public String getEmail() {
@@ -42,14 +45,6 @@ public class User extends AbstractEntity {
 		this.contactNumber = contactNumber;
 	}
 
-	public int getLockVersion() {
-		return lockVersion;
-	}
-
-	public void setLockVersion(int lockVersion) {
-		this.lockVersion = lockVersion;
-	}
-
 	public String getName() {
 		return name;
 	}
@@ -58,11 +53,11 @@ public class User extends AbstractEntity {
 		this.name = name;
 	}
 
-	public byte getShareContact() {
+	public boolean isShareContact() {
 		return shareContact;
 	}
 
-	public void setShareContact(byte shareContact) {
+	public void setShareContact(boolean shareContact) {
 		this.shareContact = shareContact;
 	}
 

@@ -9,12 +9,9 @@ import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
+@SuppressWarnings("serial")
 public abstract class AbstractPkEntity implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 4103721502408129883L;
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
 	private Integer id;

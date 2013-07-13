@@ -2,6 +2,7 @@ package com.ideazworld.amber.dao.entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
@@ -9,9 +10,12 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.ManyToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.Type;
 
 import com.amber.ideazworld.schema.beans.item.ItemStatus;
 import com.amber.ideazworld.schema.beans.item.ItemType;
@@ -25,7 +29,10 @@ import com.amber.ideazworld.schema.beans.item.ItemType;
 @DiscriminatorColumn(name = "ITEM_TYPE", discriminatorType = DiscriminatorType.STRING)
 @Entity
 public abstract class Item extends AbstractRefEntity {
-	private static final long serialVersionUID = 1L;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8142778816915825675L;
 
 	private String description;
 	
@@ -47,22 +54,33 @@ public abstract class Item extends AbstractRefEntity {
 
 	private String statusMessage;
 
+	@Type(type = "org.hibernate.type.NumericBooleanType")
 	private byte shareContact;
 	
 	//bi-directional many-to-one association to Attachment
-	@OneToMany(mappedBy="item")
+	@OneToMany(mappedBy="item", cascade=CascadeType.ALL, orphanRemoval=true)
 	private List<Attachment> attachments;
 
 	//bi-directional many-to-one association to Brand
 	@ManyToOne
+	@JoinColumn(name="brand_id")
 	private Brand brand;
 
 	//bi-directional many-to-one association to Location
 	@ManyToOne
+	@JoinColumn(name="location_id")
 	private Location location;
 
-	//bi-directional many-to-many association to Tag
-	@ManyToMany(mappedBy="items")
+	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true)
+	@JoinTable(
+			name="item_tags"
+			, joinColumns={
+				@JoinColumn(name="item_id")
+				}
+			, inverseJoinColumns={
+				@JoinColumn(name="tag_id")
+				}
+			)
 	private List<Tag> tags;
 
 	public String getDescription() {

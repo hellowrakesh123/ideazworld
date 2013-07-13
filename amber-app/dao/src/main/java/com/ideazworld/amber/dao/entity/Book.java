@@ -2,6 +2,7 @@ package com.ideazworld.amber.dao.entity;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.PrimaryKeyJoinColumn;
 
 
 /**
@@ -9,6 +10,7 @@ import javax.persistence.Entity;
  * 
  */
 @DiscriminatorValue("BOOK")
+@PrimaryKeyJoinColumn(name="item_id",referencedColumnName="id")
 @Entity
 public class Book extends Item {
 	private static final long serialVersionUID = 1L;
