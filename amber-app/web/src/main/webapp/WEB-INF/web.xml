@@ -2,7 +2,7 @@
     xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
     xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
     id="WebApp_ID" version="3.0">
-    <display-name>Invenio Web Application</display-name>
+    <display-name>Amber Web Application</display-name>
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
@@ -15,11 +15,11 @@
     </listener>
 
     <servlet>
-        <servlet-name>Invenio Rest Api</servlet-name>
+        <servlet-name>Amber Rest Api</servlet-name>
         <servlet-class>com.sun.jersey.spi.spring.container.servlet.SpringServlet</servlet-class>
         <init-param>
             <param-name>com.sun.jersey.config.property.packages</param-name>
-            <param-value>com.invenio.controller.*, com.invenio.restapi.provider.*</param-value>
+            <param-value>com.ideazworld.amber.restapi.*, com.ideazworld.amber.restapi.provider.*</param-value>
         </init-param>
         <init-param>
 			<param-name>com.sun.jersey.api.json.POJOMappingFeature</param-name>
@@ -28,7 +28,7 @@
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
-        <servlet-name>Invenio Rest Api</servlet-name>
+        <servlet-name>Amber Rest Api</servlet-name>
         <url-pattern>/rest-api/*</url-pattern>
     </servlet-mapping>
     

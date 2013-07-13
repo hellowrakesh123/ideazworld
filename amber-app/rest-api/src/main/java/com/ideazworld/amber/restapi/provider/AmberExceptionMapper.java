@@ -18,20 +18,20 @@ import com.ideazworld.amber.service.exception.StaleDataException;
 public class AmberExceptionMapper implements ExceptionMapper<AmberException> {
 
 	@Override
-	public Response toResponse(AmberException invenioException) {
+	public Response toResponse(AmberException amberException) {
 		Status status = null;
-		if(invenioException instanceof InvalidOperationException) {
+		if(amberException instanceof InvalidOperationException) {
 			status = Status.PRECONDITION_FAILED;
-		} else if(invenioException instanceof UnsupportedApiException) {
+		} else if(amberException instanceof UnsupportedApiException) {
 			status = Status.NOT_ACCEPTABLE;
-		} else if(invenioException instanceof StaleDataException) {
+		} else if(amberException instanceof StaleDataException) {
 			status = Status.CONFLICT;
 		} else {
 			status = Status.INTERNAL_SERVER_ERROR;
 		}
 		return Response.status(status)  
 	            .type(MediaType.TEXT_PLAIN)  
-	            .entity(invenioException.getLocalizedMessage())  
+	            .entity(amberException.getLocalizedMessage())  
 	            .build();
 	}
 }

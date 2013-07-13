@@ -1,3 +1,5 @@
+--This script creates the database schema and tables including foreign key references and indeces.
+
 CREATE SCHEMA IF NOT EXISTS `amber-db` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
 USE `amber-db` ;
 

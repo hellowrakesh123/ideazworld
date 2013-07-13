@@ -1,0 +1,1 @@
+--This script contains the type data for amber schema.
