@@ -228,7 +228,7 @@
 			<id>db-setup</id>
 			<properties>
 				<env_name>dev</env_name>
-				<config.path>setup/env-profiles/dev</config.path>
+				<config.path>${basedir}/web/src/main/resources/properties/</config.path>
 				<db.setup>true</db.setup>
 				<db.testdata.skip>false</db.testdata.skip>
 				<skip.config.copy>true</skip.config.copy>
