@@ -4,7 +4,6 @@ import javax.persistence.Entity;
 
 import com.ideazworld.amber.dao.entity.AbstractPkEntity;
 
-
 /**
  * The persistent class for the tag database table.
  * 

@@ -6,13 +6,12 @@ import javax.persistence.PrimaryKeyJoinColumn;
 
 import com.ideazworld.amber.dao.entity.item.Brand;
 
-
 /**
  * The persistent class for the publication_brand database table.
  * 
  */
 @DiscriminatorValue("BOOK")
-@PrimaryKeyJoinColumn(name="brand_id",referencedColumnName="id")
+@PrimaryKeyJoinColumn(name = "brand_id", referencedColumnName = "id")
 @Entity
 public class PublicationBrand extends Brand {
 	private static final long serialVersionUID = 1L;

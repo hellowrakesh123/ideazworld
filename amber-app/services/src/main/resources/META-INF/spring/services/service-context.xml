@@ -13,11 +13,11 @@
     <context:component-scan base-package="com.ideazworld.amber.service, com.ideazworld.amber.converter" />
     
     <bean id="org.dozer.Mapper" class="org.dozer.DozerBeanMapper">
-	    <property name="mappingFiles">
+	    <!-- <property name="mappingFiles">
 	        <list>
 	            <value>META-INF/dozer/dozer-bean-mappings.xml</value>
 	        </list>
-	    </property>
+	    </property> -->
 	</bean>
 
 </beans>

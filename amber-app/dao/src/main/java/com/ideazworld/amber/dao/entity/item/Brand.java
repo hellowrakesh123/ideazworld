@@ -14,7 +14,6 @@ import javax.persistence.OneToMany;
 import com.amber.ideazworld.commons.model.ItemType;
 import com.ideazworld.amber.dao.entity.AbstractPkEntity;
 
-
 /**
  * The persistent class for the brand database table.
  * 
@@ -28,12 +27,12 @@ public class Brand extends AbstractPkEntity {
 	private String name;
 
 	private int year;
-	
+
 	@Enumerated(EnumType.STRING)
 	private ItemType itemType;
 
-	//bi-directional many-to-one association to Item
-	@OneToMany(mappedBy="brand")
+	// bi-directional many-to-one association to Item
+	@OneToMany(mappedBy = "brand")
 	private List<Item> items;
 
 	public String getName() {

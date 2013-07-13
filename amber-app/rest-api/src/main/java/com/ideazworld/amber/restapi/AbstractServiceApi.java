@@ -13,42 +13,41 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import com.amber.ideazworld.schema.beans.core.BaseRefObject;
-import com.ideazworld.amber.dao.entity.AbstractBaseEntity;
+import com.amber.ideazworld.schema.beans.core.IdObject;
+import com.ideazworld.amber.dao.entity.AbstractPkEntity;
 import com.ideazworld.amber.service.PersistenceService;
 
-public abstract class AbstractRefController<T extends BaseRefObject, E extends AbstractBaseEntity, I extends Serializable, S extends PersistenceService<T, E, I>> extends AbstractController<T, E, I, S> {
+public abstract class AbstractServiceApi<T extends IdObject, E extends AbstractPkEntity, I extends Serializable, S extends PersistenceService<T, E, I>> {
 
 	protected final String resourceName;
 	protected final S service;
 
-	public AbstractRefController(String resourceName, S service) {
-		super(resourceName, service);
+	public AbstractServiceApi(String resourceName, S service) {
 		this.resourceName = resourceName;
 		this.service = service;
 	}
 
 	@GET
-	@Path("findById/{id}")
+	@Path("{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public T findById(@PathParam("id") I id) {
 		return service.findById(id);
 	}
-	
+
 	@GET
-	@Path("findAll")
+	@Path("")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<T> findAll() {
 		return service.findAll();
 	}
-	
+
 	@POST
 	@Path("save")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void save(T obj) {
 		service.save(obj);
 	}
-	
+
 	@POST
 	@Path("saveAll")
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -62,14 +61,14 @@ public abstract class AbstractRefController<T extends BaseRefObject, E extends A
 	public void update(T obj) {
 		service.update(obj);
 	}
-	
+
 	@PUT
 	@Path("updateAll")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void updateAll(List<T> list) {
 		service.updateAll(list);
 	}
-	
+
 	@DELETE
 	@Path("delete")
 	@Consumes(MediaType.APPLICATION_JSON)

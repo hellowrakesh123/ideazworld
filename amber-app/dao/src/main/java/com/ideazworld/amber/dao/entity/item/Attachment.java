@@ -8,7 +8,6 @@ import javax.persistence.ManyToOne;
 
 import com.ideazworld.amber.dao.entity.AbstractBaseEntity;
 
-
 /**
  * The persistent class for the attachment database table.
  * 
@@ -21,16 +20,16 @@ public class Attachment extends AbstractBaseEntity {
 	private static final long serialVersionUID = 2926909529718024386L;
 
 	private String name;
-	
+
 	private String description;
-	
+
 	@Lob
-	@Column(columnDefinition="blob")
+	@Column(columnDefinition = "blob")
 	private byte[] content;
 
-	//bi-directional many-to-one association to Item
+	// bi-directional many-to-one association to Item
 	@ManyToOne
-	@JoinColumn(name="item_id")
+	@JoinColumn(name = "item_id")
 	private Item item;
 
 	public String getName() {

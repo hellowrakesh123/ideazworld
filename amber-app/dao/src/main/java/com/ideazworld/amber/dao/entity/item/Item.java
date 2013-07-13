@@ -23,7 +23,6 @@ import com.ideazworld.amber.dao.entity.AbstractRefEntity;
 import com.ideazworld.amber.dao.entity.core.Location;
 import com.ideazworld.amber.dao.entity.core.Tag;
 
-
 /**
  * The persistent class for the item database table.
  * 
@@ -38,16 +37,16 @@ public abstract class Item extends AbstractRefEntity {
 	private static final long serialVersionUID = 8142778816915825675L;
 
 	private String name;
-	
+
 	private String description;
-	
+
 	@Enumerated(EnumType.STRING)
 	private ItemType itemType;
-	
+
 	private String category;
 
 	private String subCategory;
-	
+
 	private int expectedPrice;
 
 	private String itemCondition;
@@ -61,31 +60,23 @@ public abstract class Item extends AbstractRefEntity {
 
 	@Type(type = "org.hibernate.type.NumericBooleanType")
 	private byte shareContact;
-	
-	//bi-directional many-to-one association to Attachment
-	@OneToMany(mappedBy="item", cascade=CascadeType.ALL, orphanRemoval=true)
+
+	// bi-directional many-to-one association to Attachment
+	@OneToMany(mappedBy = "item", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Attachment> attachments;
 
-	//bi-directional many-to-one association to Brand
+	// bi-directional many-to-one association to Brand
 	@ManyToOne
-	@JoinColumn(name="brand_id")
+	@JoinColumn(name = "brand_id")
 	private Brand brand;
 
-	//bi-directional many-to-one association to Location
+	// bi-directional many-to-one association to Location
 	@ManyToOne
-	@JoinColumn(name="location_id")
+	@JoinColumn(name = "location_id")
 	private Location location;
 
-	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true)
-	@JoinTable(
-			name="item_tags"
-			, joinColumns={
-				@JoinColumn(name="item_id")
-				}
-			, inverseJoinColumns={
-				@JoinColumn(name="tag_id")
-				}
-			)
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+	@JoinTable(name = "item_tags", joinColumns = { @JoinColumn(name = "item_id") }, inverseJoinColumns = { @JoinColumn(name = "tag_id") })
 	private List<Tag> tags;
 
 	public String getName() {

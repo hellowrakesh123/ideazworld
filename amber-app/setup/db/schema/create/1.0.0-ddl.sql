@@ -157,9 +157,9 @@ CREATE  TABLE `item_tags` (
 ENGINE = InnoDB;
 
 -- -----------------------------------------------------
--- Table `meta_data`
+-- Table `metadata`
 -- -----------------------------------------------------
-CREATE  TABLE `meta_data` (
+CREATE  TABLE `metadata` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(45) NOT NULL ,
   `description` VARCHAR(500) NULL ,

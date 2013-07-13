@@ -1,7 +1,7 @@
 --This script drops the tables in amber schema.
 
 DROP  TABLE `user`;
-DROP  TABLE `meta_data`;
+DROP  TABLE `metadata`;
 DROP  TABLE `item_tags`;
 DROP  TABLE `tag`;
 DROP  TABLE `attachment`;

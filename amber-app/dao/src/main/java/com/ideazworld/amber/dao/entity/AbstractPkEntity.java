@@ -15,10 +15,11 @@ public abstract class AbstractPkEntity implements Serializable {
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
 	private Integer id;
-	
+
 	public Integer getId() {
 		return id;
 	}
+
 	public void setId(Integer id) {
 		this.id = id;
 	}

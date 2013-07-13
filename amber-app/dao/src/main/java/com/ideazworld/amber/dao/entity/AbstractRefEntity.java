@@ -11,18 +11,21 @@ import com.amber.ideazworld.commons.model.RefType;
 public abstract class AbstractRefEntity extends AbstractBaseEntity {
 
 	private String ref;
-    @Enumerated(EnumType.STRING)
-    private RefType refType;
-	
-    public String getRef() {
+	@Enumerated(EnumType.STRING)
+	private RefType refType;
+
+	public String getRef() {
 		return ref;
 	}
+
 	public void setRef(String ref) {
 		this.ref = ref;
 	}
+
 	public RefType getRefType() {
 		return refType;
 	}
+
 	public void setRefType(RefType refType) {
 		this.refType = refType;
 	}

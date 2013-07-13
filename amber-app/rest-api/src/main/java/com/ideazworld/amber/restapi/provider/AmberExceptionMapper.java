@@ -20,18 +20,16 @@ public class AmberExceptionMapper implements ExceptionMapper<AmberException> {
 	@Override
 	public Response toResponse(AmberException amberException) {
 		Status status = null;
-		if(amberException instanceof InvalidOperationException) {
+		if (amberException instanceof InvalidOperationException) {
 			status = Status.PRECONDITION_FAILED;
-		} else if(amberException instanceof UnsupportedApiException) {
+		} else if (amberException instanceof UnsupportedApiException) {
 			status = Status.NOT_ACCEPTABLE;
-		} else if(amberException instanceof StaleDataException) {
+		} else if (amberException instanceof StaleDataException) {
 			status = Status.CONFLICT;
 		} else {
 			status = Status.INTERNAL_SERVER_ERROR;
 		}
-		return Response.status(status)  
-	            .type(MediaType.TEXT_PLAIN)  
-	            .entity(amberException.getLocalizedMessage())  
-	            .build();
+		return Response.status(status).type(MediaType.TEXT_PLAIN)
+				.entity(amberException.getLocalizedMessage()).build();
 	}
 }

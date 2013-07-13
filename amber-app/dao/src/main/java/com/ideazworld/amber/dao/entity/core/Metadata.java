@@ -7,17 +7,16 @@ import javax.persistence.Enumerated;
 import com.amber.ideazworld.commons.model.MetadataType;
 import com.ideazworld.amber.dao.entity.AbstractPkEntity;
 
-
 /**
  * The persistent class for the meta_data database table.
  * 
  */
 @Entity
-public class MetaData extends AbstractPkEntity {
+public class Metadata extends AbstractPkEntity {
 	private static final long serialVersionUID = 1L;
 
 	private String name;
-	
+
 	private String description;
 
 	@Enumerated(EnumType.STRING)

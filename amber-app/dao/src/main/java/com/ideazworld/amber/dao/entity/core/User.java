@@ -8,7 +8,6 @@ import org.hibernate.annotations.Type;
 
 import com.ideazworld.amber.dao.entity.AbstractBaseEntity;
 
-
 /**
  * The persistent class for the user database table.
  * 
@@ -18,7 +17,7 @@ public class User extends AbstractBaseEntity {
 	private static final long serialVersionUID = 1L;
 
 	private String email;
-	
+
 	private int contactNumber;
 
 	private String name;
@@ -26,9 +25,9 @@ public class User extends AbstractBaseEntity {
 	@Type(type = "org.hibernate.type.NumericBooleanType")
 	private boolean shareContact;
 
-	//bi-directional many-to-one association to Location
+	// bi-directional many-to-one association to Location
 	@ManyToOne
-	@JoinColumn(name="location_id")
+	@JoinColumn(name = "location_id")
 	private Location location;
 
 	public String getEmail() {

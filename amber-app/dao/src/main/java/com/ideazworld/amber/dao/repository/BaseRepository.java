@@ -8,6 +8,7 @@ import org.springframework.data.repository.NoRepositoryBean;
 import com.ideazworld.amber.dao.entity.AbstractPkEntity;
 
 @NoRepositoryBean
-public interface BaseRepository<E extends AbstractPkEntity, I extends Serializable> extends JpaRepository<E, I> {
+public interface BaseRepository<E extends AbstractPkEntity, I extends Serializable>
+		extends JpaRepository<E, I> {
 
 }

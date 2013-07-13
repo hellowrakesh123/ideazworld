@@ -9,7 +9,6 @@ import javax.persistence.OneToMany;
 import com.ideazworld.amber.dao.entity.AbstractBaseEntity;
 import com.ideazworld.amber.dao.entity.item.Item;
 
-
 /**
  * The persistent class for the location database table.
  * 
@@ -32,12 +31,12 @@ public class Location extends AbstractBaseEntity {
 
 	private String zipCode;
 
-	//bi-directional one-to-many association to Item
-	@ManyToMany(mappedBy="location")
+	// bi-directional one-to-many association to Item
+	@ManyToMany(mappedBy = "location")
 	private List<Item> items;
 
-	//bi-directional many-to-one association to User
-	@OneToMany(mappedBy="location")
+	// bi-directional many-to-one association to User
+	@OneToMany(mappedBy = "location")
 	private List<User> users;
 
 	public String getAddress() {

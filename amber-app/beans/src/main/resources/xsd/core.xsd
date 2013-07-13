@@ -44,6 +44,16 @@
 		</xsd:complexContent>
 	</xsd:complexType>
 	
+	<xsd:complexType name="tag">
+		<xsd:complexContent>
+			<xsd:extension base="id-object">
+				<xsd:sequence>
+					<xsd:element name="name" type="xsd:string" />
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
 	<xsd:complexType name="user">
 		<xsd:complexContent>
 			<xsd:extension base="base-object">
@@ -74,12 +84,16 @@
 		</xsd:complexContent>
 	</xsd:complexType>
 	
-	<xsd:complexType name="meta-data">
-		<xsd:sequence>
-			<xsd:element name="name" type="xsd:string" />
-			<xsd:element name="description" type="xsd:string" />
-			<xsd:element name="type" type="meta-data-type" />
-		</xsd:sequence>
+	<xsd:complexType name="metadata">
+		<xsd:complexContent>
+			<xsd:extension base="id-object">
+				<xsd:sequence>
+					<xsd:element name="name" type="xsd:string" />
+					<xsd:element name="description" type="xsd:string" />
+					<xsd:element name="type" type="meta-data-type" />
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
 	</xsd:complexType>
 	
 	<xsd:complexType name="date-time">
