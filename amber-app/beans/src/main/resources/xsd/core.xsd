@@ -15,7 +15,6 @@
 		<xsd:complexContent>
 			<xsd:extension base="id-object">
 				<xsd:sequence>
-					<xsd:element name="id" type="xsd:int" />
 					<xsd:element name="created-time" type="date-time" />
 					<xsd:element name="created-by" type="xsd:string" />
 					<xsd:element name="updated-time" type="date-time" />
@@ -45,20 +44,6 @@
 		</xsd:complexContent>
 	</xsd:complexType>
 	
-	<xsd:simpleType name="ref-type">
-        <xsd:restriction base="xsd:string">
-            <xsd:enumeration value="ITEM"/>
-        </xsd:restriction>
-    </xsd:simpleType>
-    
-	<xsd:complexType name="date-time">
-		<xsd:annotation>
-			<xsd:appinfo>
-				<jaxb:class ref="java.util.Date" />
-			</xsd:appinfo>
-		</xsd:annotation>
-	</xsd:complexType>
-
 	<xsd:complexType name="user">
 		<xsd:complexContent>
 			<xsd:extension base="base-object">
@@ -97,12 +82,29 @@
 		</xsd:sequence>
 	</xsd:complexType>
 	
-	<xsd:simpleType name="meta-data-type">
-        <xsd:restriction base="xsd:string">
-            <xsd:enumeration value="CATEGORY"/>
-            <xsd:enumeration value="SUB_CATEGORY"/>
-        </xsd:restriction>
-    </xsd:simpleType>
+	<xsd:complexType name="date-time">
+		<xsd:annotation>
+			<xsd:appinfo>
+				<jaxb:class ref="java.util.Date" />
+			</xsd:appinfo>
+		</xsd:annotation>
+	</xsd:complexType>
+	
+	<xsd:complexType name="ref-type">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <jaxb:class ref="com.amber.ideazworld.commons.model.RefType"/>
+            </xsd:appinfo>
+        </xsd:annotation>
+    </xsd:complexType>
+    
+	<xsd:complexType name="meta-data-type">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <jaxb:class ref="com.amber.ideazworld.commons.model.MetadataType"/>
+            </xsd:appinfo>
+        </xsd:annotation>
+    </xsd:complexType>
     
 	<xsd:complexType name="search-request">
 		<xsd:sequence>

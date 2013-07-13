@@ -31,7 +31,7 @@
 		</dependency>
 		<dependency>
 			<groupId>com.ideazworld.amber</groupId>
-			<artifactId>beans</artifactId>
+			<artifactId>commons</artifactId>
 		</dependency>
 	</dependencies>
 </project>

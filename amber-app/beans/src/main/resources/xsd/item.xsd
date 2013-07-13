@@ -14,7 +14,7 @@
 				<xsd:sequence>
 					<xsd:element name="description" type="xsd:string" />
 					<xsd:element name="item-type" type="item-type" />
-					<xsd:element name="item-condition" type="item-condition" />
+					<xsd:element name="item-condition" type="item-condition-type" />
 					<xsd:element name="category" type="xsd:string" />
 					<xsd:element name="sub-category" type="xsd:string" />
 					<xsd:element name="market-price" type="xsd:int" />
@@ -22,7 +22,7 @@
 					<xsd:element name="location" type="core:location" />
 					<xsd:element name="brand" type="brand" />
 					<xsd:element name="share-contact" type="xsd:boolean" />
-					<xsd:element name="status" type="item-status" />
+					<xsd:element name="status" type="item-status-type" />
 					<xsd:element name="status-message" type="xsd:string" />
 					<xsd:element name="attachments" type="attachment" minOccurs="0" maxOccurs="unbounded" />
 					<xsd:element name="tags" type="xsd:string" minOccurs="0" maxOccurs="unbounded" />
@@ -43,27 +43,29 @@
 		</xsd:complexContent>
 	</xsd:complexType>
     
-	<xsd:simpleType name="item-status">
-        <xsd:restriction base="xsd:string">
-            <xsd:enumeration value="NEW"/>
-            <xsd:enumeration value="SOLD"/>
-            <xsd:enumeration value="DISABLED"/>
-            <xsd:enumeration value="BLOCKED"/>
-            <xsd:enumeration value="RETIRED"/>
-        </xsd:restriction>
-    </xsd:simpleType>
+	<xsd:complexType name="item-type">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <jaxb:class ref="com.amber.ideazworld.commons.model.ItemType"/>
+            </xsd:appinfo>
+        </xsd:annotation>
+    </xsd:complexType>
     
-	<xsd:simpleType name="item-condition">
-        <xsd:restriction base="xsd:string">
-            <xsd:enumeration value="NEW"/>
-            <xsd:enumeration value="LIKE_NEW"/>
-            <xsd:enumeration value="USED"/>
-            <xsd:enumeration value="NEVER_USED"/>
-            <xsd:enumeration value="DECENT"/>
-            <xsd:enumeration value="WORN"/>
-            <xsd:enumeration value="NOT_BAD"/>
-        </xsd:restriction>
-    </xsd:simpleType>
+	<xsd:complexType name="item-status-type">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <jaxb:class ref="com.amber.ideazworld.commons.model.ItemStatusType"/>
+            </xsd:appinfo>
+        </xsd:annotation>
+    </xsd:complexType>
+    
+	<xsd:complexType name="item-condition-type">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <jaxb:class ref="com.amber.ideazworld.commons.model.ItemConditionType"/>
+            </xsd:appinfo>
+        </xsd:annotation>
+    </xsd:complexType>
     
 	<xsd:complexType name="attachment">
 		<xsd:complexContent>
@@ -76,10 +78,4 @@
 			</xsd:extension>
 		</xsd:complexContent>
 	</xsd:complexType>
-	
-	<xsd:simpleType name="item-type">
-        <xsd:restriction base="xsd:string">
-            <xsd:enumeration value="BOOK"/>
-        </xsd:restriction>
-    </xsd:simpleType>
 </xsd:schema>

@@ -36,6 +36,11 @@
 		<dependencies>
 			<dependency>
 				<groupId>com.ideazworld.amber</groupId>
+				<artifactId>commons</artifactId>
+				<version>${amber.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.ideazworld.amber</groupId>
 				<artifactId>beans</artifactId>
 				<version>${amber.version}</version>
 			</dependency>

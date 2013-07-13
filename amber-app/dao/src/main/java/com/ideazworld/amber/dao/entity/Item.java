@@ -17,8 +17,8 @@ import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.Type;
 
-import com.amber.ideazworld.schema.beans.item.ItemStatus;
-import com.amber.ideazworld.schema.beans.item.ItemType;
+import com.amber.ideazworld.commons.model.ItemStatusType;
+import com.amber.ideazworld.commons.model.ItemType;
 
 
 /**
@@ -50,7 +50,7 @@ public abstract class Item extends AbstractRefEntity {
 	private int marketPrice;
 
 	@Enumerated(EnumType.STRING)
-	private ItemStatus status;
+	private ItemStatusType status;
 
 	private String statusMessage;
 
@@ -139,11 +139,11 @@ public abstract class Item extends AbstractRefEntity {
 		this.marketPrice = marketPrice;
 	}
 
-	public ItemStatus getStatus() {
+	public ItemStatusType getStatus() {
 		return status;
 	}
 
-	public void setStatus(ItemStatus status) {
+	public void setStatus(ItemStatusType status) {
 		this.status = status;
 	}
 

@@ -4,7 +4,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.MappedSuperclass;
 
-import com.amber.ideazworld.schema.beans.core.RefType;
+import com.amber.ideazworld.commons.model.RefType;
 
 @MappedSuperclass
 @SuppressWarnings("serial")

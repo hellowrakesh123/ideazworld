@@ -11,7 +11,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 
-import com.amber.ideazworld.schema.beans.item.ItemType;
+import com.amber.ideazworld.commons.model.ItemType;
 
 
 /**

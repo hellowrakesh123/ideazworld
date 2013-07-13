@@ -236,6 +236,7 @@
 		</profile>
 	</profiles>
 	<modules>
+		<module>commons</module>
 		<module>parent</module>
 		<module>beans</module>
 		<module>dao</module>

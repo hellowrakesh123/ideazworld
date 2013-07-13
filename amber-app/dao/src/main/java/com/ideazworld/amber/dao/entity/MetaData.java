@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 
-import com.amber.ideazworld.schema.beans.core.MetaDataType;
+import com.amber.ideazworld.commons.model.MetadataType;
 
 
 /**
@@ -20,7 +20,7 @@ public class MetaData extends AbstractPkEntity {
 	private String description;
 
 	@Enumerated(EnumType.STRING)
-	private MetaDataType type;
+	private MetadataType type;
 
 	public String getName() {
 		return name;
@@ -38,11 +38,11 @@ public class MetaData extends AbstractPkEntity {
 		this.description = description;
 	}
 
-	public MetaDataType getType() {
+	public MetadataType getType() {
 		return type;
 	}
 
-	public void setType(MetaDataType type) {
+	public void setType(MetadataType type) {
 		this.type = type;
 	}
 }
