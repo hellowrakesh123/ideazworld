@@ -29,9 +29,9 @@
 		<section id="content">
 			<div id="page_Home">
 				<div id="slider">
-					<img src="images/img1.jpg" alt="">
-					<img src="images/img2.jpg" alt="">
-					<img src="images/img3.jpg" alt="">
+					<img src="../images/img1.jpg" alt="">
+					<img src="../images/img2.jpg" alt="">
+					<img src="../images/img3.jpg" alt="">
 				</div>
 				<div id="slider_shadow"></div>
 				<div class="banners">
@@ -84,12 +84,12 @@
 							<div class="box1">
 								<div class="pad">
 									<div class="wrapper pad_bot2">
-										<figure class="left marg_right1"><img src="images/page1_img1.jpg" alt=""></figure>
+										<figure class="left marg_right1"><img src="../images/page1_img1.jpg" alt=""></figure>
 										<p class="pad_bot1 pad_top1"><strong>Sed ut perspiciatis unde omnis iste natus</strong></p>
 										<p>Dit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores.</p>
 									</div>
 									<div class="wrapper">
-										<figure class="left marg_right1"><img src="images/page1_img2.jpg" alt=""></figure>
+										<figure class="left marg_right1"><img src="../images/page1_img2.jpg" alt=""></figure>
 										<p class="pad_bot1 pad_top1"><strong>At vero eos et accusamus et iusto odio dignissimos</strong></p>
 										<p>Et harum quidem rerum facilis est et expedita distinctio. Namhy libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus emporibus autem quibusdam et aut officiis debitis.</p>
 									</div>
@@ -109,7 +109,7 @@
 									<div class="box1">
 										<div class="pad">
 											<div class="wrapper">
-												<figure class="left marg_right2"><a href="#"><img src="images/page2_img1.png" alt=""></a></figure>
+												<figure class="left marg_right2"><a href="#"><img src="../images/page2_img1.png" alt=""></a></figure>
 												<h3><a href="#">Management</a></h3>
 												<p>Nemo enim ipsam volup tate vuoluptas aspernatur aut odit aut fugit, sed quia consequuntur magni dolores voluptatem.</p>
 											</div>
@@ -126,7 +126,7 @@
 									<div class="box1">
 										<div class="pad">
 											<div class="wrapper">
-												<figure class="left marg_right2"><a href="#"><img src="images/page2_img3.png" alt=""></a></figure>
+												<figure class="left marg_right2"><a href="#"><img src="../images/page2_img3.png" alt=""></a></figure>
 												<h3><a href="#">Planning</a></h3>
 												<p>Voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inven tore veritatis.</p>
 											</div>
@@ -145,7 +145,7 @@
 									<div class="box1">
 										<div class="pad">
 											<div class="wrapper">
-												<figure class="left marg_right2"><a href="#"><img src="images/page2_img2.png" alt=""></a></figure>
+												<figure class="left marg_right2"><a href="#"><img src="../images/page2_img2.png" alt=""></a></figure>
 												<h3><a href="#">Banking</a></h3>
 												<p>Voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inven tore veritatis.</p>
 											</div>
@@ -162,7 +162,7 @@
 									<div class="box1">
 										<div class="pad">
 											<div class="wrapper">
-												<figure class="left marg_right2"><a href="#"><img src="images/page2_img4.png" alt=""></a></figure>
+												<figure class="left marg_right2"><a href="#"><img src="../images/page2_img4.png" alt=""></a></figure>
 												<h3><a href="#">Tax Services</a></h3>
 												<p>Nemo enim ipsam volup tate vuoluptas aspernatur aut odit aut fugit, sed quia consequuntur magni dolores voluptatem.</p>
 											</div>
@@ -183,7 +183,7 @@
 								<div class="box1_right">
 									<div class="box1">
 										<div class="pad">
-											<figure class="pad_bot1"><a href="#"><img src="images/page3_img1.jpg" alt=""></a></figure>
+											<figure class="pad_bot1"><a href="#"><img src="../images/page3_img1.jpg" alt=""></a></figure>
 											<h3><a href="#">Product #1</a></h3>
 											<p>Namhy libero temporem soluta nobis.</p>
 										</div>
@@ -196,7 +196,7 @@
 						<div class="box1_bot"><div class="box1_left"><div class="box1_right">
 							<div class="box1">
 								<div class="pad">
-									<figure class="pad_bot1"><a href="#"><img src="images/page3_img2.jpg" alt=""></a></figure>
+									<figure class="pad_bot1"><a href="#"><img src="../images/page3_img2.jpg" alt=""></a></figure>
 									<h3><a href="#">Product #2</a></h3>
 									<p>Namhy libero temporem soluta nobis.</p>
 								</div>
@@ -207,7 +207,7 @@
 						<div class="box1_bot"><div class="box1_left"><div class="box1_right">
 							<div class="box1">
 								<div class="pad">
-									<figure class="pad_bot1"><a href="#"><img src="images/page3_img3.jpg" alt=""></a></figure>
+									<figure class="pad_bot1"><a href="#"><img src="../images/page3_img3.jpg" alt=""></a></figure>
 									<h3><a href="#">Product #3</a></h3>
 									<p>Namhy libero temporem soluta nobis.</p>
 								</div>
@@ -220,7 +220,7 @@
 						<div class="box1_bot"><div class="box1_left"><div class="box1_right">
 							<div class="box1">
 								<div class="pad">
-									<figure class="pad_bot1"><a href="#"><img src="images/page3_img4.jpg" alt=""></a></figure>
+									<figure class="pad_bot1"><a href="#"><img src="../images/page3_img4.jpg" alt=""></a></figure>
 									<h3><a href="#">Product #4</a></h3>
 									<p>Namhy libero temporem soluta nobis.</p>
 								</div>
@@ -231,7 +231,7 @@
 						<div class="box1_bot"><div class="box1_left"><div class="box1_right">
 							<div class="box1">
 								<div class="pad">
-									<figure class="pad_bot1"><a href="#"><img src="images/page3_img5.jpg" alt=""></a></figure>
+									<figure class="pad_bot1"><a href="#"><img src="../images/page3_img5.jpg" alt=""></a></figure>
 									<h3><a href="#">Product #5</a></h3>
 									<p>Namhy libero temporem soluta nobis.</p>
 								</div>
@@ -242,7 +242,7 @@
 						<div class="box1_bot"><div class="box1_left"><div class="box1_right">
 							<div class="box1">
 								<div class="pad">
-									<figure class="pad_bot1"><a href="#"><img src="images/page3_img6.jpg" alt=""></a></figure>
+									<figure class="pad_bot1"><a href="#"><img src="../images/page3_img6.jpg" alt=""></a></figure>
 									<h3><a href="#">Product #6</a></h3>
 									<p>Namhy libero temporem soluta nobis.</p>
 								</div>
