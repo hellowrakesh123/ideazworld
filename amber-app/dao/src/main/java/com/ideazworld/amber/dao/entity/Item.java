@@ -1,0 +1,179 @@
+package com.ideazworld.amber.dao.entity;
+
+import java.util.List;
+
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+import com.amber.ideazworld.schema.beans.item.ItemStatus;
+import com.amber.ideazworld.schema.beans.item.ItemType;
+
+
+/**
+ * The persistent class for the item database table.
+ * 
+ */
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name = "ITEM_TYPE", discriminatorType = DiscriminatorType.STRING)
+@Entity
+public abstract class Item extends AbstractRefEntity {
+	private static final long serialVersionUID = 1L;
+
+	private String description;
+	
+	@Enumerated(EnumType.STRING)
+	private ItemType itemType;
+	
+	private String category;
+
+	private String subCategory;
+	
+	private int expectedPrice;
+
+	private String itemCondition;
+
+	private int marketPrice;
+
+	@Enumerated(EnumType.STRING)
+	private ItemStatus status;
+
+	private String statusMessage;
+
+	private byte shareContact;
+	
+	//bi-directional many-to-one association to Attachment
+	@OneToMany(mappedBy="item")
+	private List<Attachment> attachments;
+
+	//bi-directional many-to-one association to Brand
+	@ManyToOne
+	private Brand brand;
+
+	//bi-directional many-to-one association to Location
+	@ManyToOne
+	private Location location;
+
+	//bi-directional many-to-many association to Tag
+	@ManyToMany(mappedBy="items")
+	private List<Tag> tags;
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public ItemType getItemType() {
+		return itemType;
+	}
+
+	public void setItemType(ItemType itemType) {
+		this.itemType = itemType;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
+	public String getSubCategory() {
+		return subCategory;
+	}
+
+	public void setSubCategory(String subCategory) {
+		this.subCategory = subCategory;
+	}
+
+	public int getExpectedPrice() {
+		return expectedPrice;
+	}
+
+	public void setExpectedPrice(int expectedPrice) {
+		this.expectedPrice = expectedPrice;
+	}
+
+	public String getItemCondition() {
+		return itemCondition;
+	}
+
+	public void setItemCondition(String itemCondition) {
+		this.itemCondition = itemCondition;
+	}
+
+	public int getMarketPrice() {
+		return marketPrice;
+	}
+
+	public void setMarketPrice(int marketPrice) {
+		this.marketPrice = marketPrice;
+	}
+
+	public ItemStatus getStatus() {
+		return status;
+	}
+
+	public void setStatus(ItemStatus status) {
+		this.status = status;
+	}
+
+	public String getStatusMessage() {
+		return statusMessage;
+	}
+
+	public void setStatusMessage(String statusMessage) {
+		this.statusMessage = statusMessage;
+	}
+
+	public byte getShareContact() {
+		return shareContact;
+	}
+
+	public void setShareContact(byte shareContact) {
+		this.shareContact = shareContact;
+	}
+
+	public List<Attachment> getAttachments() {
+		return attachments;
+	}
+
+	public void setAttachments(List<Attachment> attachments) {
+		this.attachments = attachments;
+	}
+
+	public Brand getBrand() {
+		return brand;
+	}
+
+	public void setBrand(Brand brand) {
+		this.brand = brand;
+	}
+
+	public Location getLocation() {
+		return location;
+	}
+
+	public void setLocation(Location location) {
+		this.location = location;
+	}
+
+	public List<Tag> getTags() {
+		return tags;
+	}
+
+	public void setTags(List<Tag> tags) {
+		this.tags = tags;
+	}
+}

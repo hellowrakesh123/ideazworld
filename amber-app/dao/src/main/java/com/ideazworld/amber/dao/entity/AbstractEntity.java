@@ -2,7 +2,6 @@ package com.ideazworld.amber.dao.entity;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
-import java.io.Serializable;
 import java.sql.Timestamp;
 
 import javax.persistence.GeneratedValue;
@@ -10,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
-public abstract class AbstractEntity implements Serializable {
+public abstract class AbstractEntity extends AbstractPkEntity {
 
 	/**
 	 * 
@@ -18,7 +17,6 @@ public abstract class AbstractEntity implements Serializable {
 	private static final long serialVersionUID = 4103721502408129883L;
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
-	private Integer id;
 	private String createdBy;
 	private Timestamp createdTime;
 	private String updatedBy;
@@ -26,12 +24,6 @@ public abstract class AbstractEntity implements Serializable {
 	private int lockVersion;
 	private boolean active;
 	
-	public Integer getId() {
-		return id;
-	}
-	public void setId(Integer id) {
-		this.id = id;
-	}
 	public String getCreatedBy() {
 		return createdBy;
 	}

@@ -32,12 +32,17 @@
 	</xsd:complexType>
 	
 	<xsd:complexType name="brand">
-		<xsd:sequence>
-			<xsd:element name="name" type="xsd:string" />
-			<xsd:element name="year" type="xsd:int" />
-		</xsd:sequence>
+		<xsd:complexContent>
+			<xsd:extension base="core:id-object">
+				<xsd:sequence>
+					<xsd:element name="name" type="xsd:string" />
+					<xsd:element name="year" type="xsd:int" />
+					<xsd:element name="item-type" type="item-type" />
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
 	</xsd:complexType>
-	
+    
 	<xsd:simpleType name="item-status">
         <xsd:restriction base="xsd:string">
             <xsd:enumeration value="NEW"/>

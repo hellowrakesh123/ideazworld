@@ -12,7 +12,7 @@ public abstract class AbstractRefEntity extends AbstractEntity {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 4103721502408129883L;
+	protected static final long serialVersionUID = 4103721502408129883L;
 	private String name;
     private String ref;
     @Enumerated(EnumType.STRING)

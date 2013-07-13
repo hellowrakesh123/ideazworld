@@ -5,16 +5,26 @@
 	xmlns:annox="http://annox.dev.java.net" jaxb:extensionBindingPrefixes="annox"
 	xmlns:sd="http://annox.dev.java.net/org.springframework.data.annotation">
 
-	<xsd:complexType name="base-object" abstract="true">
+	<xsd:complexType name="id-object" abstract="true">
 		<xsd:sequence>
 			<xsd:element name="id" type="xsd:int" />
-			<xsd:element name="created-time" type="date-time" />
-			<xsd:element name="created-by" type="xsd:string" />
-			<xsd:element name="updated-time" type="date-time" />
-			<xsd:element name="updated-by" type="xsd:string" />
-			<xsd:element name="lock-version" type="xsd:int" />
-			<xsd:element name="active" type="xsd:boolean" />
 		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="base-object" abstract="true">
+		<xsd:complexContent>
+			<xsd:extension base="id-object">
+				<xsd:sequence>
+					<xsd:element name="id" type="xsd:int" />
+					<xsd:element name="created-time" type="date-time" />
+					<xsd:element name="created-by" type="xsd:string" />
+					<xsd:element name="updated-time" type="date-time" />
+					<xsd:element name="updated-by" type="xsd:string" />
+					<xsd:element name="lock-version" type="xsd:int" />
+					<xsd:element name="active" type="xsd:boolean" />
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
 	</xsd:complexType>
 
 	<xsd:complexType name="ref">
