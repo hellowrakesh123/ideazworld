@@ -20,6 +20,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE  TABLE `location` (
   `id` INT NOT NULL AUTO_INCREMENT ,
+  `name` VARCHAR(100) NOT NULL ,
+  `ref` VARCHAR(45) NOT NULL ,
   `address` VARCHAR(500) NULL ,
   `locality` VARCHAR(45) NULL ,
   `land_mark` VARCHAR(55) NULL ,
@@ -43,7 +45,6 @@ CREATE  TABLE `item` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(100) NOT NULL ,
   `ref` VARCHAR(45) NOT NULL ,
-  `ref_type` VARCHAR(45) NOT NULL ,
   `description` VARCHAR(500) NOT NULL ,
   `item_type` VARCHAR(45) NOT NULL ,
   `item_condition` VARCHAR(45) NOT NULL ,
@@ -110,7 +111,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE  TABLE `attachment` (
   `id` INT NOT NULL AUTO_INCREMENT ,
-  `name` VARCHAR(45) NOT NULL ,
+  `name` VARCHAR(100) NOT NULL ,
+  `ref` VARCHAR(45) NOT NULL ,
   `description` VARCHAR(500) NULL ,
   `content` BLOB NOT NULL ,
   `item_id` INT NOT NULL ,
@@ -173,8 +175,9 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE  TABLE `user` (
   `id` INT NOT NULL AUTO_INCREMENT ,
+  `name` VARCHAR(100) NOT NULL ,
+  `ref` VARCHAR(45) NOT NULL ,
   `email` VARCHAR(100) NOT NULL ,
-  `name` VARCHAR(50) NULL ,
   `contact_number` INT NULL ,
   `share_contact` INT(1) NULL ,
   `location_id` INT NOT NULL ,

@@ -1,23 +1,36 @@
 package com.ideazworld.amber.service;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import org.springframework.transaction.annotation.Transactional;
 
-import com.amber.ideazworld.schema.beans.core.BaseRefObject;
+import com.amber.ideazworld.schema.beans.core.RefObject;
 import com.ideazworld.amber.converter.Converter;
 import com.ideazworld.amber.dao.entity.AbstractRefEntity;
 import com.ideazworld.amber.dao.repository.RefRepository;
 
 @Transactional(readOnly = true)
-public abstract class AbstractRefPersistenceService<T extends BaseRefObject, C extends Converter<T, E>, E extends AbstractRefEntity, I extends Serializable, R extends RefRepository<E, I>>
-		extends AbstractBasePersistenceService<T, C, E, I, R> implements
+public abstract class AbstractRefPersistenceService<T extends RefObject, C extends Converter<T, E>, E extends AbstractRefEntity, I extends Serializable, R extends RefRepository<E, I>>
+		extends AbstractPkPersistenceService<T, C, E, I, R> implements
 		RefPersistenceService<T, E, I> {
 
 	public AbstractRefPersistenceService(Converter<T, E> converter, R repository) {
 		super(converter, repository);
 	}
 
+	@Transactional(readOnly = false)
+	@Override
+	public void save(T obj) {
+		if (obj.getId() < 1) {
+			obj.setCreatedTime(new Date());
+			obj.setCreatedBy("hellowrakesh123@gmail.com");
+		} else {
+			obj.setUpdatedBy("hellowrakesh123@gmail.com");
+		}
+		super.save(obj);
+	}
+	
 	@Override
 	public T findByRef(String ref) {
 		E entity = repository.findByRef(ref);

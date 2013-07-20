@@ -36,8 +36,6 @@ public abstract class Item extends AbstractRefEntity {
 	 */
 	private static final long serialVersionUID = 8142778816915825675L;
 
-	private String name;
-
 	private String description;
 
 	@Enumerated(EnumType.STRING)
@@ -78,14 +76,6 @@ public abstract class Item extends AbstractRefEntity {
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinTable(name = "item_tags", joinColumns = { @JoinColumn(name = "item_id") }, inverseJoinColumns = { @JoinColumn(name = "tag_id") })
 	private List<Tag> tags;
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
 
 	public String getDescription() {
 		return description;

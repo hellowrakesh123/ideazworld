@@ -6,20 +6,18 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 
-import com.ideazworld.amber.dao.entity.AbstractBaseEntity;
+import com.ideazworld.amber.dao.entity.AbstractRefEntity;
 
 /**
  * The persistent class for the attachment database table.
  * 
  */
 @Entity
-public class Attachment extends AbstractBaseEntity {
+public class Attachment extends AbstractRefEntity {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 2926909529718024386L;
-
-	private String name;
 
 	private String description;
 
@@ -31,14 +29,6 @@ public class Attachment extends AbstractBaseEntity {
 	@ManyToOne
 	@JoinColumn(name = "item_id")
 	private Item item;
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
 
 	public String getDescription() {
 		return description;

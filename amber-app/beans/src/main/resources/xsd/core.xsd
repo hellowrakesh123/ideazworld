@@ -11,11 +11,12 @@
 		</xsd:sequence>
 	</xsd:complexType>
 	
-	<xsd:complexType name="base-object" abstract="true">
+	<xsd:complexType name="ref-object" abstract="true">
 		<xsd:complexContent>
 			<xsd:extension base="id-object">
 				<xsd:sequence>
 					<xsd:element name="name" type="xsd:string" />
+					<xsd:element name="ref" type="ref" />
 					<xsd:element name="created-time" type="date-time" />
 					<xsd:element name="created-by" type="xsd:string" />
 					<xsd:element name="updated-time" type="date-time" />
@@ -30,18 +31,7 @@
 	<xsd:complexType name="ref">
 		<xsd:sequence>
 			<xsd:element name="ref-id" type="xsd:string" />
-			<xsd:element name="ref-type" type="ref-type" />
 		</xsd:sequence>
-	</xsd:complexType>
-	
-	<xsd:complexType name="base-ref-object" abstract="true">
-		<xsd:complexContent>
-			<xsd:extension base="base-object">
-				<xsd:sequence>
-					<xsd:element name="ref" type="ref" />
-				</xsd:sequence>
-			</xsd:extension>
-		</xsd:complexContent>
 	</xsd:complexType>
 	
 	<xsd:complexType name="tag">
@@ -56,10 +46,9 @@
 	
 	<xsd:complexType name="user">
 		<xsd:complexContent>
-			<xsd:extension base="base-object">
+			<xsd:extension base="ref-object">
 				<xsd:sequence>
 					<xsd:element name="email" type="xsd:string" />
-					<xsd:element name="name" type="xsd:string" />
 					<xsd:element name="location" type="location" />
 					<xsd:element name="contact-number" type="xsd:int" />
 					<xsd:element name="share-contact" type="xsd:boolean" />
@@ -70,7 +59,7 @@
 	
 	<xsd:complexType name="location">
 		<xsd:complexContent>
-			<xsd:extension base="base-object">
+			<xsd:extension base="ref-object">
 				<xsd:sequence>
 					<xsd:element name="address" type="xsd:string" />
 					<xsd:element name="locality" type="xsd:string" />
@@ -103,14 +92,6 @@
 			</xsd:appinfo>
 		</xsd:annotation>
 	</xsd:complexType>
-	
-	<xsd:complexType name="ref-type">
-        <xsd:annotation>
-            <xsd:appinfo>
-                <jaxb:class ref="com.amber.ideazworld.commons.model.RefType"/>
-            </xsd:appinfo>
-        </xsd:annotation>
-    </xsd:complexType>
     
 	<xsd:complexType name="meta-data-type">
         <xsd:annotation>

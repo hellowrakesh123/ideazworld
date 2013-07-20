@@ -10,7 +10,7 @@
 	
 	<xsd:complexType name="item">
 		<xsd:complexContent>
-			<xsd:extension base="core:base-ref-object">
+			<xsd:extension base="core:ref-object">
 				<xsd:sequence>
 					<xsd:element name="description" type="xsd:string" />
 					<xsd:element name="item-type" type="item-type" />
@@ -69,9 +69,8 @@
     
 	<xsd:complexType name="attachment">
 		<xsd:complexContent>
-			<xsd:extension base="core:base-object">
+			<xsd:extension base="core:ref-object">
 				<xsd:sequence>
-					<xsd:element name="name" type="xsd:string" />
 					<xsd:element name="description" type="xsd:string" />
 					<xsd:element name="content" type="xsd:string" />
 				</xsd:sequence>

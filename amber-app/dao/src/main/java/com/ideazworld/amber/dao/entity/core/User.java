@@ -6,21 +6,19 @@ import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.Type;
 
-import com.ideazworld.amber.dao.entity.AbstractBaseEntity;
+import com.ideazworld.amber.dao.entity.AbstractRefEntity;
 
 /**
  * The persistent class for the user database table.
  * 
  */
 @Entity
-public class User extends AbstractBaseEntity {
+public class User extends AbstractRefEntity {
 	private static final long serialVersionUID = 1L;
 
 	private String email;
 
 	private int contactNumber;
-
-	private String name;
 
 	@Type(type = "org.hibernate.type.NumericBooleanType")
 	private boolean shareContact;
@@ -44,14 +42,6 @@ public class User extends AbstractBaseEntity {
 
 	public void setContactNumber(int contactNumber) {
 		this.contactNumber = contactNumber;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	public boolean isShareContact() {

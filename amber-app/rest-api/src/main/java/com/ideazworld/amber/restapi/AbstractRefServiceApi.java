@@ -13,17 +13,17 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import com.amber.ideazworld.schema.beans.core.BaseRefObject;
-import com.ideazworld.amber.dao.entity.AbstractBaseEntity;
-import com.ideazworld.amber.service.PersistenceService;
+import com.amber.ideazworld.schema.beans.core.RefObject;
+import com.ideazworld.amber.dao.entity.AbstractRefEntity;
+import com.ideazworld.amber.service.RefPersistenceService;
 
-public abstract class AbstractRefServuceApi<T extends BaseRefObject, E extends AbstractBaseEntity, I extends Serializable, S extends PersistenceService<T, E, I>>
+public abstract class AbstractRefServiceApi<T extends RefObject, E extends AbstractRefEntity, I extends Serializable, S extends RefPersistenceService<T, E, I>>
 		extends AbstractServiceApi<T, E, I, S> {
 
 	protected final String resourceName;
 	protected final S service;
 
-	public AbstractRefServuceApi(String resourceName, S service) {
+	public AbstractRefServiceApi(String resourceName, S service) {
 		super(resourceName, service);
 		this.resourceName = resourceName;
 		this.service = service;
