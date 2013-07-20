@@ -3,17 +3,16 @@
 span.chyron { font-size: 1.2em; padding-top: 10px; }
 
 /** the form elements **/
-#hongkiat-form { box-sizing: border-box; }
+.hongkiat-form { box-sizing: border-box; }
 
-#hongkiat-form .txtinput { 
+.txtinput { 
 display: block;
 border-style: solid;
 border-width: 1px;
 border-color: #dedede;
 margin-bottom: 20px;
-padding: 11px 25px;
-padding-left: 55px;
-width: 90%;
+padding: 10px 10px;
+width: 70%;
 color: #777;
 box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset;
 -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset;
@@ -24,7 +23,7 @@ transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s line
 -o-transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
 }
 
-#hongkiat-form .txtinput:focus { 
+.txtinput:focus { 
 color: #333;
 border-color: rgba(41, 92, 161, 0.4);
 box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset, 0 0 8px rgba(41, 92, 161, 0.6);
@@ -33,27 +32,13 @@ box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset, 0 0 8px rgba(41, 92, 161, 0.6);
 outline: 0 none; 
 }
 
-#hongkiat-form input#name {
-background: #fff url('../images/user.png') 5px 4px no-repeat;
-}
-#hongkiat-form input#email {
-background: #fff url('../images/email.png') 5px 4px no-repeat;
-}
-#hongkiat-form input#website {
-background: #fff url('../images/website.png') 5px 4px no-repeat;
-}
-#hongkiat-form input#telephone {
-background: #fff url('../images/phone.png') 5px 4px no-repeat;
-}
-
-#hongkiat-form textarea {
+.txtarea {
 display: block;
 border-style: solid;
 border-width: 1px;
 border-color: #dedede;
 margin-bottom: 15px;
-padding: 11px 25px;
-padding-left: 55px;
+padding: 10px 10px;
 width: 90%;
 height: 180px;
 color: #777;
@@ -65,7 +50,7 @@ transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s line
 -moz-transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
 -o-transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
 }
-#hongkiat-form textarea:focus {
+.txtarea:focus {
 color: #333;
 border-color: rgba(41, 92, 161, 0.4);
 box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset, 0 0 8px rgba(40, 90, 160, 0.6);
@@ -73,26 +58,23 @@ box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset, 0 0 8px rgba(40, 90, 160, 0.6);
 -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset, 0 0 8px rgba(40, 90, 160, 0.6);
 outline: 0 none; 
 }
-#hongkiat-form textarea.txtblock {
-background: #fff url('../images/speech.png') 5px 4px no-repeat;
-}
 
-#hongkiat-form #slider { width: 60%; }
+.slider { width: 60%; }
 
-#hongkiat-form #aligned { 
+.aligned { 
 box-sizing: border-box; 
 float: left; 
 width: 450px; 
 margin-right: 50px; 
 }
-#hongkiat-form #aside {
+.aside {
 	float: left;
 	width: 250px;
 	padding: 0;
 	box-sizing: border-box;
 }
 
-#wrapping { width: 100%; box-sizing: border-box; }
+.wrapping { width: 100%; box-sizing: border-box; }
 
 span.radiobadge { display: block; margin-bottom: 8px; }
 span.radiobadge label { font-size: 1.2em; padding-bottom: 4px; }

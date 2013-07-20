@@ -166,8 +166,13 @@ CREATE  TABLE `metadata` (
   `name` VARCHAR(45) NOT NULL ,
   `description` VARCHAR(500) NULL ,
   `type` VARCHAR(45) NOT NULL ,
+  `parent_id` INT ,
   PRIMARY KEY (`id`) ,
-  UNIQUE INDEX `name_UNIQUE` (`name` ASC) )
+  UNIQUE INDEX `name_UNIQUE` (`name` ASC),
+  CONSTRAINT `fk_parent_metadata`
+    FOREIGN KEY (`parent_id` )
+    REFERENCES `metadata` (`id` )
+    )
 ENGINE = InnoDB;
 
 -- -----------------------------------------------------
