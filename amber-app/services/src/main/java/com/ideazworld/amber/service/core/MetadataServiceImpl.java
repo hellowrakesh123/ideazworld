@@ -28,7 +28,8 @@ public class MetadataServiceImpl
 		if(type == null) {
 			return new ArrayList<>(0);
 		}
-		List<Metadata> metadataList = converter.convertFrom(repository.findByType(MetadataType.valueOf(type.toUpperCase())));
+		MetadataType metadataType = MetadataType.valueOf(type.toUpperCase());
+		List<Metadata> metadataList = converter.convertFrom(repository.findByType(metadataType));
 		return metadataList;
 	}
 }

@@ -1,0 +1,10 @@
+{
+	"metadata": {
+		"id" : "metadata",
+		"path" : "/metadata"
+	},
+	"types": {
+		"id" : "types",
+		"path" : "/types"
+	}
+}

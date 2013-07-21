@@ -80,7 +80,6 @@
 					<xsd:element name="name" type="xsd:string" />
 					<xsd:element name="description" type="xsd:string" />
 					<xsd:element name="type" type="meta-data-type" />
-					<xsd:element name="parent" type="metadata" />
 					<xsd:element name="children" type="metadata" minOccurs="0" maxOccurs="unbounded" />
 				</xsd:sequence>
 			</xsd:extension>
