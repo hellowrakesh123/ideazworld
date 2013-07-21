@@ -7,10 +7,17 @@ function getUrlApi(path) {
 	xmlhttp = new XMLHttpRequest();
 	xmlhttp.open("GET", path, false);
 	xmlhttp.send(null);
-	if(xmlhttp.status != 200 && xmlhttp.status != 204) {
-		displayMessage('An error occurred while getting the data, please try again.', 'error');
-	}
 	return xmlhttp.responseText;
+}
+
+function postUrlApi(url, data) {
+	$.ajax({
+	  type: "POST",
+	  url: url,
+	  data: data,
+	  dataType: "json",
+	  contentType: "application/json"
+	});
 }
 
 function getServiceResponse(serviceId, data) {
@@ -21,4 +28,8 @@ function getServiceResponse(serviceId, data) {
 		responseJson = stringToJson(responseText);
 	}
 	return responseJson;
+}
+
+function postServiceResponse(serviceId, url, data) {
+	postUrlApi(service_base_url + services_list[serviceId].path + url, data);
 }

@@ -7,7 +7,7 @@ function stringToJson(stringJson) {
 }
 
 function jsonToString(json) {
-	return JSON.stringify(json);
+	return JSON.stringify(json, null, 4);
 }
 
 function sortJson(jsonObject, field) {
