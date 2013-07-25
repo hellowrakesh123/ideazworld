@@ -45,10 +45,14 @@
 					localityElement.setAttribute("data-placeholder", "Locality");
 					localityElement.className = "chzn-select";
 					localityElement.style = "width: 350px;";
+					if(localityList.length < 1) {
+						var cityName = city + " (Pincode - 000000)";
+						localityElement.appendChild(new Option(cityName, cityName, "", false));
+					}
 					for(var i=0;i<localityList.length;i++){
 						var locality = localityList[i];
 						var localityName = locality['Locality'] + " (Pincode - " + locality['Zipcode'] + ")";
-						localityElement.appendChild(new Option(locality['Locality'], locality['Zipcode'], "", false));
+						localityElement.appendChild(new Option(localityName, locality['Zipcode'], "", false));
 					}
 					localityDiv.appendChild(localityElement);
 					break;
