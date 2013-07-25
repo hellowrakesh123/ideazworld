@@ -24,6 +24,7 @@ public class GenerateLocaleDetails {
 			JSONArray stateArray = new JSONArray();
 			ObjectMapper mapper = new ObjectMapper();
 			String stateDetails = getServiceData("state", null);
+			saveToFile(stateDetails, "all_states");
 			List stateList = mapper.readValue(stateDetails, List.class);
 			for(int index = 0; index < stateList.size(); index++) {
 				JSONObject stateObject = new JSONObject();
@@ -113,7 +114,7 @@ public class GenerateLocaleDetails {
 		fileName = fileName.trim();
 		fileName = fileName.replace(" ", "_");
 		fileName = fileName.replace("*", "");
-		String filePath = "/Users/ruchipandeya/Projects/repos/ideazworld/amber-app/commons/india/" + fileName;
+		String filePath = System.getProperty("user.dir") + "/data/india/" + fileName;
 		System.out.println("filePath: " + filePath + ", contents: " + content);
 		try {
 			File file = new File(filePath);

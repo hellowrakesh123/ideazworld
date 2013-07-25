@@ -3,6 +3,60 @@
 <head>
 	<%@ include file="includes.html" %>
 	<script>
+		var states_map = {};
+		function initCountryStates() {
+			var states = stringToJson(getUrlApi(base_url + "/data/locales/country/india/all_states.json"));
+			var cityElement = document.getElementById("city");
+			for(var index=0;index<states.length;index++){
+				var state = states[index]['Name'];
+				state = state.trim();
+				state = state.replace(/\s/g, '_');
+				state = state.replace(/\*/g, '');
+				var cities = stringToJson(getUrlApi(base_url + "/data/locales/country/india/" + state + ".json"));
+				states_map[state] = cities;
+				var optGroup = document.createElement("optgroup");
+				optGroup.label = state;
+				for(var i=0;i<cities['cities'].length;i++){
+					var city = cities['cities'][i];
+					var id = state + "," + city['city'];
+					optGroup.appendChild(new Option(city['city'], id, "", false));
+				}
+				cityElement.appendChild(optGroup);
+			}
+		}
+	
+		function populateCityLocality() {
+			var cityCode = document.getElementById("city");
+			var cityCodeArray = cityCode.value.split(",");
+			var state = cityCodeArray[0];
+			var city = cityCodeArray[1];
+			var cities = states_map[state]['cities'];
+			for(var i=0;i<cities.length;i++){
+				var cityObj = cities[i];
+				if(cityObj['city'] == city) {
+					var localityList = cityObj['localities'];
+					var localityDiv = document.getElementById("localityDiv")
+					var localityElement = document.getElementById("locality");
+					while (localityDiv.firstChild) {
+						localityDiv.removeChild(localityDiv.firstChild);
+					}
+					localityElement = document.createElement("select");
+					localityElement.id = "locality";
+					localityElement.setAttribute("data-placeholder", "Locality");
+					localityElement.className = "chzn-select";
+					localityElement.style = "width: 350px;";
+					for(var i=0;i<localityList.length;i++){
+						var locality = localityList[i];
+						var localityName = locality['Locality'] + " (Pincode - " + locality['Zipcode'] + ")";
+						localityElement.appendChild(new Option(locality['Locality'], locality['Zipcode'], "", false));
+					}
+					localityDiv.appendChild(localityElement);
+					break;
+				}
+			}
+			initChzn();
+		}
+		
 		function initStatus() {
 			var responseJson = getServiceResponse('types', "/item-status");
 			var status = document.getElementById("status");
@@ -36,6 +90,7 @@
 		}
 		
 		function init() {
+			initCountryStates();
 			initStatus();
 			initLanguages();
 			initCategory();
@@ -92,33 +147,14 @@
 						<textarea name="description" id="description" placeholder="Tell your potential buyers more about the book..." tabindex="6" class="txtarea" style="width: 400px; height: 100px"></textarea>
 						<br>
 						<br>
-						<select data-placeholder="City" style="width: 200px;" class="chzn-select">
+						<select id="city" data-placeholder="City" style="width: 200px;" class="chzn-select" onChange="populateCityLocality()">
 							<option value=""></option>
-							<optgroup label="NFC EAST">
-								<option>Dallas Cowboys</option>
-								<option>New York Giants</option>
-								<option>Philadelphia Eagles</option>
-								<option>Washington Redskins</option>
-							</optgroup>
-							<optgroup label="NFC NORTH">
-								<option>Chicago Bears</option>
-								<option>Detroit Lions</option>
-								<option>Green Bay Packers</option>
-								<option>Minnesota Vikings</option>
-							</optgroup>
-							<optgroup label="NFC SOUTH">
-								<option>Atlanta Falcons</option>
-								<option>Carolina Panthers</option>
-								<option>New Orleans Saints</option>
-								<option>Tampa Bay Buccaneers</option>
-							</optgroup>
 						</select>
-						<select data-placeholder="Landmark" style="width: 350px;" class="chzn-select" tabindex="8">
-							<option></option>
-							<option>New</option>
-							<option>Like New</option>
-							<option>Used</option>
-						</select>
+						<div id="localityDiv" style="width: 100%">
+							<select id="locality" data-placeholder="Locality" style="width: 350px;" class="chzn-select" tabindex="8">
+								<option value=""></option>
+							</select>
+						</div>
 						<input type="checkbox">Share Contact Number
 						<input type="checkbox">Share Email
 						<br><br>
