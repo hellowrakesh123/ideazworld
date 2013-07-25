@@ -1,0 +1,109 @@
+[
+   {
+      "ID":"1",
+      "Name":"Assam ",
+      "Type":"state",
+      "cities":[
+         {
+            "city":"Abhayapuri",
+            "localities":[
+               {
+                  "Locality":"Abhayapuri",
+                  "Zipcode":"783384"
+               },
+               {
+                  "Locality":"Borabhayapuri",
+                  "Zipcode":"786103"
+               }
+            ]
+         },
+         {
+            "city":"Amguri",
+            "localities":[
+               {
+                  "Locality":"Amguri Bazar",
+                  "Zipcode":"735224"
+               },
+               {
+                  "Locality":"Bhogramguri",
+                  "Zipcode":"735303"
+               },
+               {
+                  "Locality":"Amguri",
+                  "Zipcode":"781317"
+               },
+               {
+                  "Locality":"Amguri",
+                  "Zipcode":"782136"
+               },
+               {
+                  "Locality":"Amguri",
+                  "Zipcode":"782410"
+               },
+               {
+                  "Locality":"Amguri Bazar",
+                  "Zipcode":"783393"
+               },
+               {
+                  "Locality":"Ballamguri Bazar",
+                  "Zipcode":"783393"
+               },
+               {
+                  "Locality":"Amgurinabhanga",
+                  "Zipcode":"785614"
+               },
+               {
+                  "Locality":"Amguri",
+                  "Zipcode":"785680"
+               },
+               {
+                  "Locality":"Samguri",
+                  "Zipcode":"785680"
+               },
+               {
+                  "Locality":"Amguri Haloating",
+                  "Zipcode":"785681"
+               },
+               {
+                  "Locality":"Amguri",
+                  "Zipcode":"786160"
+               },
+               {
+                  "Locality":"Dibru Amguri",
+                  "Zipcode":"786610"
+               },
+               {
+                  "Locality":"Kadamguri",
+                  "Zipcode":"787034"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "ID":"2",
+      "Name":"Jammu and Kashmir",
+      "Type":"state",
+      "cities":[
+         {
+            "city":"Achabbal",
+            "localities":[
+
+            ]
+         },
+         {
+            "city":"Akhnoor",
+            "localities":[
+               {
+                  "Locality":"Akhnoor",
+                  "Zipcode":"181201"
+               },
+               {
+                  "Locality":"Pacca Danga Akhnoor",
+                  "Zipcode":"181201"
+               }
+            ]
+         }
+      ]
+   }
+]
