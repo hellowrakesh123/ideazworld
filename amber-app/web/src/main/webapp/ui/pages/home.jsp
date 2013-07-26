@@ -2,8 +2,93 @@
 <html>
 <head>
 	<%@ include file="includes.html" %>
+	<script>
+		var states_map = {};
+		
+		function initCountryStates() {
+			var states_map = getStatesMap();
+			var cityElement = document.getElementById("city");
+			for (var state in states_map){
+				var cities = states_map[state];
+				var optGroup = document.createElement("optgroup");
+				optGroup.label = state;
+				for(var i=0;i<cities['cities'].length;i++){
+					var city = cities['cities'][i];
+					var id = state + "," + city['city'];
+					optGroup.appendChild(new Option(city['city'], id, "", false));
+				}
+				cityElement.appendChild(optGroup);
+			}
+			initChzn();
+		}
+		
+		function saveUserPreference() {
+			var city = document.getElementById("city").value;
+			setCookie(USER_PREFERRED_LOCATION, city);
+		}
+		
+		function initChzn() {
+			var config = {
+				'.chzn-select' : {},
+				'.chzn-select-deselect' : {
+					allow_single_deselect : true
+				},
+				'.chzn-select-no-single' : {
+					disable_search_threshold : 10
+				},
+				'.chzn-select-no-results' : {
+					no_results_text : 'Oops, nothing found!'
+				},
+				'.chzn-select-width' : {
+					width : "95%"
+				}
+			}
+			for ( var selector in config) {
+				$(selector).chosen(config[selector]);
+			}
+		}
+		
+		function showUserPreferenceDialog() {
+			var user_saved_location = getCookie(USER_PREFERRED_LOCATION);
+			user_saved_location = typeof user_saved_location != 'undefined' ? user_saved_location : null;
+			if(user_saved_location == null) {
+				$('#modal').reveal({ // The item which will be opened with reveal
+				  	animation: 'fade',                   // fade, fadeAndPop, none
+					animationspeed: 600,                       // how fast animtions are
+					closeonbackgroundclick: false,              // if you click background will modal close?
+					dismissmodalclass: 'close'    // the class of a button or element that will close an open modal
+				});
+				return true;
+			}
+			return false;
+		}
+		
+		function init() {
+			getStatesMap();
+			var display = showUserPreferenceDialog();
+			if(display) {
+				initCountryStates();
+			}
+		}
+	</script>
 </head>
-<body>
+<body onLoad="init()">
+	<div id="modal">
+		<div id="modal-heading">
+			Choose your City
+		</div>
+		<div id="modal-content">
+			<p>Please select the city where you want to localize the search, this will be saved as the preferred location and next time you login, we will already know.</p>
+			<div>
+				<select id="city" data-placeholder="City" style="width: 200px;" class="chzn-select" onChange="saveUserPreference()">
+					<option value=""></option>
+				</select>
+				<div id="buttons" style="display: inline">
+					<input type="submit" name="submit" id="submitbtn" class="submitbtn close" style="float: none; height: 25px; display: inline" value="Select" />
+				</div>
+			</div>
+		</div>
+	</div>
 	<div id="container" class="clearfix">
 		<%@ include file="header.html" %>
 		<div id="maincont" class="clearfix">
