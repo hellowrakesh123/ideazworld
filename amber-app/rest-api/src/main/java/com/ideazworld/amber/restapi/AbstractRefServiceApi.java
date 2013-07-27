@@ -1,13 +1,8 @@
 package com.ideazworld.amber.restapi;
 
 import java.io.Serializable;
-import java.util.List;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -30,51 +25,9 @@ public abstract class AbstractRefServiceApi<T extends RefObject, E extends Abstr
 	}
 
 	@GET
-	@Path("findById/{id}")
+	@Path("findByRef/{ref}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public T findById(@PathParam("id") I id) {
-		return service.findById(id);
-	}
-
-	@GET
-	@Path("findAll")
-	@Produces(MediaType.APPLICATION_JSON)
-	public List<T> findAll() {
-		return service.findAll();
-	}
-
-	@POST
-	@Path("save")
-	@Consumes(MediaType.APPLICATION_JSON)
-	public void save(T obj) {
-		service.save(obj);
-	}
-
-	@POST
-	@Path("saveAll")
-	@Consumes(MediaType.APPLICATION_JSON)
-	public void saveAll(List<T> list) {
-		service.saveAll(list);
-	}
-
-	@PUT
-	@Path("update")
-	@Consumes(MediaType.APPLICATION_JSON)
-	public void update(T obj) {
-		service.update(obj);
-	}
-
-	@PUT
-	@Path("updateAll")
-	@Consumes(MediaType.APPLICATION_JSON)
-	public void updateAll(List<T> list) {
-		service.updateAll(list);
-	}
-
-	@DELETE
-	@Path("delete")
-	@Consumes(MediaType.APPLICATION_JSON)
-	public void delete(T obj) {
-		service.delete(obj);
+	public T findById(@PathParam("ref") String ref) {
+		return service.findByRef(ref);
 	}
 }

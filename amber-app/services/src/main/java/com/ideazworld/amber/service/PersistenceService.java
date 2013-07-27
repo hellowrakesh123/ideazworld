@@ -12,13 +12,13 @@ public interface PersistenceService<T extends IdObject, E extends AbstractPkEnti
 
 	public List<T> findAll();
 
-	public void save(T entity);
+	public T save(T entity);
 
-	public void saveAll(List<T> list);
+	public List<T> saveAll(List<T> list);
 
-	public void update(T obj);
+	public T update(T obj);
 
-	public void updateAll(List<T> list);
+	public List<T> updateAll(List<T> list);
 
 	public void delete(T entity);
 }

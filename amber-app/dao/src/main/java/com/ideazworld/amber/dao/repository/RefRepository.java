@@ -10,5 +10,5 @@ import com.ideazworld.amber.dao.entity.AbstractRefEntity;
 public interface RefRepository<E extends AbstractRefEntity, I extends Serializable>
 		extends BaseRepository<E, I> {
 
-	public E findByRef(String ref);
+	public E findByReference(String reference);
 }

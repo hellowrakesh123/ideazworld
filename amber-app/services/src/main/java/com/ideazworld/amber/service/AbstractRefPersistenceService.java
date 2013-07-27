@@ -21,19 +21,19 @@ public abstract class AbstractRefPersistenceService<T extends RefObject, C exten
 
 	@Transactional(readOnly = false)
 	@Override
-	public void save(T obj) {
+	public T save(T obj) {
 		if (obj.getId() < 1) {
 			obj.setCreatedTime(new Date());
 			obj.setCreatedBy("hellowrakesh123@gmail.com");
-		} else {
-			obj.setUpdatedBy("hellowrakesh123@gmail.com");
 		}
-		super.save(obj);
+		obj.setUpdatedTime(new Date());
+		obj.setUpdatedBy("hellowrakesh123@gmail.com");
+		return super.save(obj);
 	}
 	
 	@Override
 	public T findByRef(String ref) {
-		E entity = repository.findByRef(ref);
+		E entity = repository.findByReference(ref);
 		return converter.convertFrom(entity);
 	}
 }

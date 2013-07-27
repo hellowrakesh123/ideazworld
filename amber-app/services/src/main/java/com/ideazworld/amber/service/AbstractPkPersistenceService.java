@@ -1,6 +1,7 @@
 package com.ideazworld.amber.service;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.constraints.NotNull;
@@ -40,32 +41,37 @@ public abstract class AbstractPkPersistenceService<T extends IdObject, C extends
 
 	@Transactional(readOnly = false)
 	@Override
-	public void save(@NotNull T obj) {
-		repository.save(converter.convertTo(obj));
+	public T save(@NotNull T obj) {
+		E entity = converter.convertTo(obj);
+		entity = repository.save(entity);
+		return converter.convertFrom(entity);
 	}
 
 	@Transactional(readOnly = false)
 	@Override
-	public void saveAll(@NotNull List<T> list) {
-		repository.save(converter.convertTo(list));
+	public List<T> saveAll(@NotNull List<T> list) {
+		List<E> entities = repository.save(converter.convertTo(list));
+		return converter.convertFrom(entities);
 	}
 
 	@Transactional(readOnly = false)
 	@Override
-	public void update(@NotNull T obj) {
+	public T update(@NotNull T obj) {
 		if (obj.getId() < 1) {
 			throw new InvalidOperationException(
 					"Error while performing update operation, only existing objects can be updated.");
 		}
-		save(obj);
+		return save(obj);
 	}
 
 	@Transactional(readOnly = false)
 	@Override
-	public void updateAll(@NotNull List<T> list) {
+	public List<T> updateAll(@NotNull List<T> list) {
+		List<T> updatedList = new ArrayList<>();
 		for (T t : list) {
-			update(t);
+			updatedList.add(update(t));
 		}
+		return updatedList;
 	}
 
 	@Transactional(readOnly = false)

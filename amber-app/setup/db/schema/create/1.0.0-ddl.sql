@@ -20,8 +20,6 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE  TABLE `location` (
   `id` INT NOT NULL AUTO_INCREMENT ,
-  `name` VARCHAR(100) NOT NULL ,
-  `ref` VARCHAR(45) NOT NULL ,
   `address` VARCHAR(500) NULL ,
   `locality` VARCHAR(45) NULL ,
   `land_mark` VARCHAR(55) NULL ,
@@ -29,12 +27,6 @@ CREATE  TABLE `location` (
   `state` VARCHAR(45) NOT NULL ,
   `country` VARCHAR(45) NOT NULL ,
   `zip_code` VARCHAR(45) NULL ,
-  `created_time` TIMESTAMP NOT NULL ,
-  `created_by` VARCHAR(45) NOT NULL ,
-  `updated_time` TIMESTAMP NOT NULL ,
-  `updated_by` VARCHAR(45) NOT NULL ,
-  `lock_version` INT NOT NULL ,
-  `active` INT(1) NOT NULL ,
   PRIMARY KEY (`id`) )
 ENGINE = InnoDB;
 
@@ -44,7 +36,7 @@ ENGINE = InnoDB;
 CREATE  TABLE `item` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(100) NOT NULL ,
-  `ref` VARCHAR(45) NOT NULL ,
+  `reference` VARCHAR(45) NOT NULL ,
   `description` VARCHAR(500) NOT NULL ,
   `item_type` VARCHAR(45) NOT NULL ,
   `item_condition` VARCHAR(45) NOT NULL ,
@@ -112,16 +104,9 @@ ENGINE = InnoDB;
 CREATE  TABLE `attachment` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(100) NOT NULL ,
-  `ref` VARCHAR(45) NOT NULL ,
   `description` VARCHAR(500) NULL ,
   `content` BLOB NOT NULL ,
   `item_id` INT NOT NULL ,
-  `created_time` TIMESTAMP NOT NULL ,
-  `created_by` VARCHAR(45) NOT NULL ,
-  `updated_time` TIMESTAMP NOT NULL ,
-  `updated_by` VARCHAR(45) NOT NULL ,
-  `lock_version` INT NOT NULL ,
-  `active` INT(1) NOT NULL ,
   PRIMARY KEY (`id`) ,
   INDEX `fk_attachment_item_idx` (`item_id` ASC) ,
   CONSTRAINT `fk_attachment_item`
@@ -181,17 +166,11 @@ ENGINE = InnoDB;
 CREATE  TABLE `user` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(100) NOT NULL ,
-  `ref` VARCHAR(45) NOT NULL ,
+  `sex` VARCHAR(100) NOT NULL ,
   `email` VARCHAR(100) NOT NULL ,
   `contact_number` INT NULL ,
   `share_contact` INT(1) NULL ,
   `location_id` INT NOT NULL ,
-  `created_time` TIMESTAMP NOT NULL ,
-  `created_by` VARCHAR(45) NOT NULL ,
-  `updated_time` TIMESTAMP NOT NULL ,
-  `updated_by` VARCHAR(45) NOT NULL ,
-  `lock_version` INT NOT NULL ,
-  `active` INT(1) NOT NULL ,
   PRIMARY KEY (`id`) ,
   UNIQUE INDEX `email_UNIQUE` (`email` ASC) ,
   INDEX `fk_user_location_idx` (`location_id` ASC) ,

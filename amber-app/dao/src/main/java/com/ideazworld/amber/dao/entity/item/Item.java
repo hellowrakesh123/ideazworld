@@ -17,6 +17,7 @@ import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.Type;
 
+import com.amber.ideazworld.commons.model.ItemConditionType;
 import com.amber.ideazworld.commons.model.ItemStatusType;
 import com.amber.ideazworld.commons.model.ItemType;
 import com.ideazworld.amber.dao.entity.AbstractRefEntity;
@@ -47,7 +48,8 @@ public abstract class Item extends AbstractRefEntity {
 
 	private int expectedPrice;
 
-	private String itemCondition;
+	@Enumerated(EnumType.STRING)
+	private ItemConditionType itemCondition;
 
 	private int marketPrice;
 
@@ -57,19 +59,19 @@ public abstract class Item extends AbstractRefEntity {
 	private String statusMessage;
 
 	@Type(type = "org.hibernate.type.NumericBooleanType")
-	private byte shareContact;
+	private boolean shareContact;
 
 	// bi-directional many-to-one association to Attachment
 	@OneToMany(mappedBy = "item", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Attachment> attachments;
 
 	// bi-directional many-to-one association to Brand
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "brand_id")
 	private Brand brand;
 
 	// bi-directional many-to-one association to Location
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "location_id")
 	private Location location;
 
@@ -117,11 +119,11 @@ public abstract class Item extends AbstractRefEntity {
 		this.expectedPrice = expectedPrice;
 	}
 
-	public String getItemCondition() {
+	public ItemConditionType getItemCondition() {
 		return itemCondition;
 	}
 
-	public void setItemCondition(String itemCondition) {
+	public void setItemCondition(ItemConditionType itemCondition) {
 		this.itemCondition = itemCondition;
 	}
 
@@ -149,11 +151,11 @@ public abstract class Item extends AbstractRefEntity {
 		this.statusMessage = statusMessage;
 	}
 
-	public byte getShareContact() {
+	public boolean isShareContact() {
 		return shareContact;
 	}
 
-	public void setShareContact(byte shareContact) {
+	public void setShareContact(boolean shareContact) {
 		this.shareContact = shareContact;
 	}
 

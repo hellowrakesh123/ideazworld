@@ -9,7 +9,7 @@ import com.amber.ideazworld.schema.beans.core.Tag;
 import com.ideazworld.amber.restapi.AbstractServiceApi;
 import com.ideazworld.amber.service.core.TagService;
 
-@Path("/tags")
+@Path("/tag")
 @Service
 public class TagServiceApi
 		extends

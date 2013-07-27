@@ -6,5 +6,5 @@ import com.ideazworld.amber.dao.repository.RefRepository;
 public interface ItemRepository extends RefRepository<Item, Integer> {
 
 	@Override
-	public Item findByRef(String ref);
+	public Item findByReference(String reference);
 }

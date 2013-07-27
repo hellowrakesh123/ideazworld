@@ -44,29 +44,33 @@ public abstract class AbstractServiceApi<T extends IdObject, E extends AbstractP
 	@POST
 	@Path("save")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void save(T obj) {
-		service.save(obj);
+	@Produces(MediaType.APPLICATION_JSON)
+	public T save(T obj) {
+		return service.save(obj);
 	}
 
 	@POST
 	@Path("saveAll")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void saveAll(List<T> list) {
-		service.saveAll(list);
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<T> saveAll(List<T> list) {
+		return service.saveAll(list);
 	}
 
 	@PUT
 	@Path("update")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void update(T obj) {
-		service.update(obj);
+	@Produces(MediaType.APPLICATION_JSON)
+	public T update(T obj) {
+		return service.update(obj);
 	}
 
 	@PUT
 	@Path("updateAll")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void updateAll(List<T> list) {
-		service.updateAll(list);
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<T> updateAll(List<T> list) {
+		return service.updateAll(list);
 	}
 
 	@DELETE

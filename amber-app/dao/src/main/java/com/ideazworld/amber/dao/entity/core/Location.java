@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
-import com.ideazworld.amber.dao.entity.AbstractRefEntity;
+import com.ideazworld.amber.dao.entity.AbstractPkEntity;
 import com.ideazworld.amber.dao.entity.item.Item;
 
 /**
@@ -14,7 +14,7 @@ import com.ideazworld.amber.dao.entity.item.Item;
  * 
  */
 @Entity
-public class Location extends AbstractRefEntity {
+public class Location extends AbstractPkEntity {
 	private static final long serialVersionUID = 1L;
 
 	private String address;

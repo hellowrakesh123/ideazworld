@@ -16,7 +16,7 @@ public abstract class AbstractRefEntity extends AbstractPkEntity {
 	private static final long serialVersionUID = -7004788807521260451L;
 	
 	private String name;
-	private String ref;
+	private String reference;
 	private String createdBy;
 	private Timestamp createdTime;
 	private String updatedBy;
@@ -32,11 +32,11 @@ public abstract class AbstractRefEntity extends AbstractPkEntity {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getRef() {
-		return ref;
+	public String getReference() {
+		return reference;
 	}
-	public void setRef(String ref) {
-		this.ref = ref;
+	public void setReference(String reference) {
+		this.reference = reference;
 	}
 	public String getCreatedBy() {
 		return createdBy;

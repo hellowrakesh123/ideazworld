@@ -29,9 +29,9 @@ public abstract class AbstractRefConverter<T extends RefObject, V extends Abstra
 			v = mapper.map(t, vClazz);
 			if (t.getRef() != null) {
 				Ref ref = t.getRef();
-				v.setRef(ref.getRefId());
+				v.setReference(ref.getRefId());
 			} else {
-				v.setRef(UUID.randomUUID().toString());
+				v.setReference(UUID.randomUUID().toString());
 			}
 		}
 		return v;
@@ -43,7 +43,7 @@ public abstract class AbstractRefConverter<T extends RefObject, V extends Abstra
 		if (v != null) {
 			t = mapper.map(v, tClazz);
 			Ref ref = new Ref();
-			ref.setRefId(v.getRef());
+			ref.setRefId(v.getReference());
 			t.setRef(ref);
 		}
 		return t;
