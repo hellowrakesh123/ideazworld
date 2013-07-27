@@ -2,9 +2,11 @@ package com.ideazworld.amber.dao.entity.core;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.Type;
 
 import com.ideazworld.amber.dao.entity.AbstractPkEntity;
 import com.ideazworld.amber.dao.entity.item.Item;
@@ -30,9 +32,12 @@ public class Location extends AbstractPkEntity {
 	private String state;
 
 	private String zipCode;
+	
+	@Type(type = "org.hibernate.type.NumericBooleanType")
+	private boolean publicLocation;
 
 	// bi-directional one-to-many association to Item
-	@ManyToMany(mappedBy = "location")
+	@OneToMany(mappedBy = "location", cascade = CascadeType.ALL, orphanRemoval = false)
 	private List<Item> items;
 
 	// bi-directional many-to-one association to User
@@ -93,6 +98,14 @@ public class Location extends AbstractPkEntity {
 
 	public void setZipCode(String zipCode) {
 		this.zipCode = zipCode;
+	}
+
+	public boolean isPublicLocation() {
+		return publicLocation;
+	}
+
+	public void setPublicLocation(boolean publicLocation) {
+		this.publicLocation = publicLocation;
 	}
 
 	public List<Item> getItems() {

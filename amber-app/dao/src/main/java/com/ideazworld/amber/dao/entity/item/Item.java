@@ -66,12 +66,12 @@ public abstract class Item extends AbstractRefEntity {
 	private List<Attachment> attachments;
 
 	// bi-directional many-to-one association to Brand
-	@ManyToOne(cascade = CascadeType.MERGE)
+	@ManyToOne
 	@JoinColumn(name = "brand_id")
 	private Brand brand;
 
 	// bi-directional many-to-one association to Location
-	@ManyToOne(cascade = CascadeType.MERGE)
+	@ManyToOne()
 	@JoinColumn(name = "location_id")
 	private Location location;
 

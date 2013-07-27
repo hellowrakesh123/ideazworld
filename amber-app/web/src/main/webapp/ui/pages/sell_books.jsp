@@ -28,7 +28,7 @@
 						for(var i=0;i<localityList.length;i++){
 							var locality = localityList[i];
 							var localityName = locality['Locality'] + " (Pincode - " + locality['Zipcode'] + ")";
-							localityElement.appendChild(new Option(localityName, locality['Zipcode'], "", false));
+							localityElement.appendChild(new Option(localityName, locality['Locality'] + "," + locality['Zipcode'], "", false));
 						}	
 					}
 					break;
@@ -36,17 +36,17 @@
 			}
 		}
 		
-		function initStatus() {
-			var responseJson = getServiceResponse('types', "/item-status");
-			var status = document.getElementById("status");
+		function initCondition() {
+			var responseJson = getServiceResponse('types.item-condition');
+			var condition = document.getElementById("condition");
 			for(var index=0;index<responseJson.length;index++){
 				var obj = responseJson[index];
-				status.appendChild(new Option(obj, obj, "", false));
+				condition.appendChild(new Option(obj, obj, "", false));
 			}
 		}
 	
 		function initLanguages() {
-			var languages = stringToJson(getUrlApi(base_url + "/data/books/language.json"));
+			var languages = stringToJson(getUrlApi(BASE_URL + "/data/books/language.json"));
 			var language = document.getElementById("language");
 			for(var index=0;index<languages.length;index++){
 				language.appendChild(new Option(languages[index], languages[index], "", false));
@@ -54,26 +54,65 @@
 		}
 	
 		function initCategory() {
-			var responseJson = getServiceResponse('metadata', "/type/category");
-			var category = document.getElementById("category");
+			var responseJson = getServiceResponse('metadata.category');
+			var category = document.getElementById("category_info");
 			for(var index=0;index<responseJson.length;index++){
 				var obj = responseJson[index];
 				var optGroup = document.createElement("optgroup");
 				optGroup.label = obj.name;
 				for(var i=0;i<obj.children.length;i++){
 					var val = obj.children[i];
-					optGroup.appendChild(new Option(val.name, val.id, "", false));
+					optGroup.appendChild(new Option(val.name, obj.name + "," + val.id, "", false));
 				}
 				category.appendChild(optGroup);
 			}
 		}
 		
 		function createBookPost() {
-			
+			var request_map = {};
+			var bookName = document.getElementById("book_name").value;
+			request_map['name'] = bookName;
+			var language = document.getElementById("language").value;
+			request_map['language'] = language;
+			var description = document.getElementById("description").value;
+			request_map['description'] = description;
+			var categoryInfo = document.getElementById("category_info").value;
+			var categoryArray = categoryInfo.split(",");
+			request_map['category'] = categoryArray[0];
+			request_map['sub-category'] = categoryArray[1];
+			var expectedPrice = document.getElementById("expected_price").value;
+			request_map['expected-price'] = expectedPrice;
+			var marketPrice = document.getElementById("market_price").value;
+			request_map['market-price'] = marketPrice;
+			var itemCondition = document.getElementById("condition").value;
+			request_map['item-condition'] = itemCondition;
+			var location_map = {};
+			var user_saved_location = getCookie(USER_PREFERRED_LOCATION);
+			user_saved_location = typeof user_saved_location != 'undefined' ? user_saved_location : null;
+			if(user_saved_location == null) {
+				return;
+			}
+			var cityCodeArray = user_saved_location.split(",");
+			var state = cityCodeArray[0];
+			location_map['state'] = state;
+			var city = cityCodeArray[1];
+			location_map['city'] = city;
+			var localityInfo = document.getElementById("locality").value;
+			var localityArray = localityInfo.split(",");
+			var locality = localityArray[0];
+			location_map['locality'] = locality;
+			var zip = localityArray[1];
+			location_map['zip-code'] = zip;
+			var address = document.getElementById("address").value;
+			location_map['address'] = address;
+			var country = "INDIA";
+			location_map['country'] = country;
+			request_map['location'] = location_map;
+			postServiceResponse("books.save", jsonToString(request_map));
 		}
 		
 		function init() {
-			initStatus();
+			initCondition();
 			initLanguages();
 			initCategory();
 			initLocality();
@@ -95,7 +134,7 @@
 				'.chzn-select-width' : {
 					width : "95%"
 				}
-			}
+			};
 			for ( var selector in config) {
 				$(selector).chosen(config[selector]);
 			}
@@ -108,17 +147,17 @@
 		<div id="maincont" class="clearfix">
 			<div class="ic"></div>
 			<h2>Your Book</h2>
-			<form method="post" action="#" class="hongkiat-form">
+			<form id="book-form" method="post" action="#" class="hongkiat-form">
 				<div class="wrapping clearfix">
 					<section>
-						<select id="category" data-placeholder="Category" style="width: 200px;" class="chzn-select">
+						<select id="category_info" data-placeholder="Category" style="width: 200px;" class="chzn-select">
 							<option value=""></option>
 						</select>
 						<select id="language" data-placeholder="Language" style="width: 160px;"
 							class="chzn-select" tabindex="8">
 							<option></option>
 						</select>
-						<select id="status" data-placeholder="Status" style="width: 160px;"
+						<select id="condition" data-placeholder="Status" style="width: 160px;"
 							class="chzn-select" tabindex="8">
 							<option></option>
 						</select>
@@ -142,13 +181,13 @@
 						<input type="text" name="tags" id="tags" placeholder="Tags (comma separated values)" autocomplete="off" tabindex="2" class="txtinput" style="width: 200px;" />
 					</section>
 				</div>
-				<section id="buttons">
-					<input type="reset" name="reset" id="resetbtn" class="resetbtn"
-						value="Reset" /> <input type="submit" name="submit" id="submitbtn"
-						class="submitbtn" tabindex="7" value="Submit this!" /> <br
-						style="clear: both;" />
-				</section>
 			</form>
+			<section id="buttons">
+				<input type="reset" name="reset" id="resetbtn" class="resetbtn"
+					value="Reset" /> <input type="submit" name="submit" id="submitbtn"
+					class="submitbtn" tabindex="7" value="Submit this!" onClick="createBookPost()" /> <br
+					style="clear: both;" />
+			</section>
 		</div>
 	</div>
 	<%@ include file="footer.html"%>

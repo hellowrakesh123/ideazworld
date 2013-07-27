@@ -25,7 +25,7 @@ public abstract class AbstractRefServiceApi<T extends RefObject, E extends Abstr
 	}
 
 	@GET
-	@Path("findByRef/{ref}")
+	@Path("ref/{ref}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public T findById(@PathParam("ref") String ref) {
 		return service.findByRef(ref);

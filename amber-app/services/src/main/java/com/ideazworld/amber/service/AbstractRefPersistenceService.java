@@ -19,16 +19,14 @@ public abstract class AbstractRefPersistenceService<T extends RefObject, C exten
 		super(converter, repository);
 	}
 
-	@Transactional(readOnly = false)
 	@Override
-	public T save(T obj) {
+	protected void doSave(T obj) {
 		if (obj.getId() < 1) {
 			obj.setCreatedTime(new Date());
 			obj.setCreatedBy("hellowrakesh123@gmail.com");
 		}
 		obj.setUpdatedTime(new Date());
 		obj.setUpdatedBy("hellowrakesh123@gmail.com");
-		return super.save(obj);
 	}
 	
 	@Override

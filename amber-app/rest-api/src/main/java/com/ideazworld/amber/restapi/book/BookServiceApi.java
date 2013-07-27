@@ -9,7 +9,7 @@ import com.amber.ideazworld.schema.beans.book.Book;
 import com.ideazworld.amber.restapi.AbstractRefServiceApi;
 import com.ideazworld.amber.service.book.BookService;
 
-@Path("/book")
+@Path("/books")
 @Service
 public class BookServiceApi extends AbstractRefServiceApi<Book, com.ideazworld.amber.dao.entity.book.Book, Integer, BookService> {
 

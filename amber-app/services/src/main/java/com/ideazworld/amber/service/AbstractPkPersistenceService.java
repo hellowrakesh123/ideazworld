@@ -26,6 +26,10 @@ public abstract class AbstractPkPersistenceService<T extends IdObject, C extends
 		this.converter = converter;
 		this.repository = repository;
 	}
+	
+	protected void doSave(T obj) {
+		
+	}
 
 	@Override
 	public T findById(@NotNull I id) {
@@ -41,7 +45,8 @@ public abstract class AbstractPkPersistenceService<T extends IdObject, C extends
 
 	@Transactional(readOnly = false)
 	@Override
-	public T save(@NotNull T obj) {
+	public final T save(@NotNull T obj) {
+		doSave(obj);
 		E entity = converter.convertTo(obj);
 		entity = repository.save(entity);
 		return converter.convertFrom(entity);
@@ -49,14 +54,17 @@ public abstract class AbstractPkPersistenceService<T extends IdObject, C extends
 
 	@Transactional(readOnly = false)
 	@Override
-	public List<T> saveAll(@NotNull List<T> list) {
+	public final List<T> saveAll(@NotNull List<T> list) {
+		for (T t : list) {
+			doSave(t);
+		}
 		List<E> entities = repository.save(converter.convertTo(list));
 		return converter.convertFrom(entities);
 	}
 
 	@Transactional(readOnly = false)
 	@Override
-	public T update(@NotNull T obj) {
+	public final T update(@NotNull T obj) {
 		if (obj.getId() < 1) {
 			throw new InvalidOperationException(
 					"Error while performing update operation, only existing objects can be updated.");
@@ -66,7 +74,7 @@ public abstract class AbstractPkPersistenceService<T extends IdObject, C extends
 
 	@Transactional(readOnly = false)
 	@Override
-	public List<T> updateAll(@NotNull List<T> list) {
+	public final List<T> updateAll(@NotNull List<T> list) {
 		List<T> updatedList = new ArrayList<>();
 		for (T t : list) {
 			updatedList.add(update(t));

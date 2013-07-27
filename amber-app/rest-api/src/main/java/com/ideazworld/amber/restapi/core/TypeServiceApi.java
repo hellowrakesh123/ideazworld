@@ -10,6 +10,7 @@ import javax.ws.rs.core.MediaType;
 
 import org.springframework.stereotype.Service;
 
+import com.amber.ideazworld.commons.model.ItemConditionType;
 import com.amber.ideazworld.commons.model.ItemStatusType;
 
 @Path("/types")
@@ -21,5 +22,12 @@ public class TypeServiceApi {
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<ItemStatusType> findAllItemStatus() {
 		return Arrays.asList(ItemStatusType.values());
+	}
+	
+	@GET
+	@Path("/item-condition")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<ItemConditionType> findAllItemCondition() {
+		return Arrays.asList(ItemConditionType.values());
 	}
 }

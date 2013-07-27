@@ -8,7 +8,7 @@
 
 	<xsd:import namespace="http://www.ideazworld.amber.com/schema/beans/core" schemaLocation="core.xsd"/>
 	
-	<xsd:complexType name="item">
+	<xsd:complexType name="item" abstract="true">
 		<xsd:complexContent>
 			<xsd:extension base="core:ref-object">
 				<xsd:sequence>

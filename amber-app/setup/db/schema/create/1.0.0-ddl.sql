@@ -27,6 +27,7 @@ CREATE  TABLE `location` (
   `state` VARCHAR(45) NOT NULL ,
   `country` VARCHAR(45) NOT NULL ,
   `zip_code` VARCHAR(45) NULL ,
+  `public_location` INT(1) NULL ,
   PRIMARY KEY (`id`) )
 ENGINE = InnoDB;
 
@@ -53,10 +54,8 @@ CREATE  TABLE `item` (
   `created_by` VARCHAR(45) NOT NULL ,
   `updated_time` TIMESTAMP NOT NULL ,
   `updated_by` VARCHAR(45) NOT NULL ,
-  `lock_version` INT NOT NULL ,
   `active` INT(1) NOT NULL ,
   PRIMARY KEY (`id`) ,
-  UNIQUE INDEX `lock_version_UNIQUE` (`lock_version` ASC) ,
   INDEX `fk_item_location_idx` (`location_id` ASC) ,
   INDEX `fk_item_brand_idx` (`brand_id` ASC) ,
   CONSTRAINT `fk_item_location`

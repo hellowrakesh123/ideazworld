@@ -1,8 +1,3 @@
-//define root url
-var base_url = "/amber";
-var service_base_url = base_url + "/rest-api";
-var services_list = stringToJson(getUrlApi(base_url + "/data/rest-api.json"));
-
 function getUrlApi(path) {
 	xmlhttp = new XMLHttpRequest();
 	xmlhttp.open("GET", path, false);
@@ -22,7 +17,12 @@ function postUrlApi(url, data) {
 
 function getServiceResponse(serviceId, data) {
 	data = typeof data != 'undefined' ? data : "";
-	var responseText = getUrlApi(service_base_url + services_list[serviceId].path + data);
+	var services_map = getServicesMap();
+	var serviceIdArray = serviceId.split(".");
+	var service = serviceIdArray[0];
+	var api = serviceIdArray[1];
+	var servicePath = services_map[service].path + services_map[service].apis[api].path;
+	var responseText = getUrlApi(SERVICE_BASE_URL + servicePath + data);
 	var responseJson = null;
 	if(responseText != "") {
 		responseJson = stringToJson(responseText);
@@ -30,6 +30,21 @@ function getServiceResponse(serviceId, data) {
 	return responseJson;
 }
 
-function postServiceResponse(serviceId, url, data) {
-	postUrlApi(service_base_url + services_list[serviceId].path + url, data);
+function postServiceResponse(serviceId, data) {
+	var services_map = getServicesMap();
+	var serviceIdArray = serviceId.split(".");
+	var service = serviceIdArray[0];
+	var api = serviceIdArray[1];
+	var servicePath = services_map[service].path + services_map[service].apis[api].path;
+	postUrlApi(SERVICE_BASE_URL + servicePath, data);
+}
+
+function getServicesMap() {
+	var services_map = window.SERVICES_MAP;
+	services_map = typeof services_map != 'undefined' ? services_map : null;
+	if(services_map == null) {
+		services_map = stringToJson(getUrlApi(BASE_URL + "/data/rest-api.json"));
+		window.SERVICES_MAP = services_map;
+	}
+	return services_map;
 }
