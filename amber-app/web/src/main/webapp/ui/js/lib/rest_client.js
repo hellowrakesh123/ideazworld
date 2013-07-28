@@ -5,16 +5,6 @@ function getUrlApi(path) {
 	return xmlhttp.responseText;
 }
 
-function postUrlApi(url, data) {
-	$.ajax({
-	  type: "POST",
-	  url: url,
-	  data: data,
-	  dataType: "json",
-	  contentType: "application/json"
-	});
-}
-
 function getServiceResponse(serviceId, data) {
 	data = typeof data != 'undefined' ? data : "";
 	var services_map = getServicesMap();
@@ -36,7 +26,29 @@ function postServiceResponse(serviceId, data) {
 	var service = serviceIdArray[0];
 	var api = serviceIdArray[1];
 	var servicePath = services_map[service].path + services_map[service].apis[api].path;
-	postUrlApi(SERVICE_BASE_URL + servicePath, data);
+	$.ajax({
+		  type: "POST",
+		  url: SERVICE_BASE_URL + servicePath,
+		  data: data,
+		  dataType: "json",
+		  contentType: "application/json"
+		})
+		.done(function(data) {
+			var method = api+"SuccessHandler(data);";
+			try {
+				eval(method);
+		    } catch (e) {
+		        //ignore the error
+		    }
+		})
+		.fail(function(xhr, status, error) {
+			var method = api+"FailureHandler(data);";
+			try {
+				eval(method);
+		    } catch (e) {
+		        //ignore the error
+		    }
+		});
 }
 
 function getServicesMap() {

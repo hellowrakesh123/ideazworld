@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import com.amber.ideazworld.schema.beans.core.IdObject;
+import com.amber.ideazworld.schema.beans.core.SearchRequest;
 import com.ideazworld.amber.dao.entity.AbstractPkEntity;
 
 public interface PersistenceService<T extends IdObject, E extends AbstractPkEntity, I extends Serializable> {
@@ -21,4 +22,6 @@ public interface PersistenceService<T extends IdObject, E extends AbstractPkEnti
 	public List<T> updateAll(List<T> list);
 
 	public void delete(T entity);
+	
+	public List<T> search(SearchRequest searchRequest);
 }

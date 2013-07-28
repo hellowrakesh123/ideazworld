@@ -6,8 +6,24 @@ function stringToJson(stringJson) {
 	return JSON.parse(stringJson);
 }
 
-function jsonToString(json) {
-	return JSON.stringify(json, null, 4);
+function jsonToString(json, indent) {
+	indent = typeof indent != 'undefined' ? indent : 4;
+	var value = "";
+	if(indent == 0) {
+		value = JSON.stringify(json);
+	} else {
+		value = JSON.stringify(json, null, indent);
+	}
+	return value;
+}
+
+function isValidJson(value) {
+    try {
+        JSON.parse(value);
+    } catch (e) {
+        return false;
+    }
+    return true;
 }
 
 function sortJson(jsonObject, field) {

@@ -4,15 +4,20 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.validation.constraints.NotNull;
 
 import org.apache.commons.collections.IteratorUtils;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.amber.ideazworld.schema.beans.core.IdObject;
+import com.amber.ideazworld.schema.beans.core.SearchRequest;
 import com.ideazworld.amber.converter.Converter;
 import com.ideazworld.amber.dao.entity.AbstractPkEntity;
 import com.ideazworld.amber.dao.repository.BaseRepository;
+import com.ideazworld.amber.exception.UnsupportedOperationException;
 import com.ideazworld.amber.service.exception.InvalidOperationException;
 
 @Transactional(readOnly = true)
@@ -21,6 +26,9 @@ public abstract class AbstractPkPersistenceService<T extends IdObject, C extends
 
 	protected final R repository;
 	protected final Converter<T, E> converter;
+	
+	@PersistenceContext
+	protected EntityManager entityManager;
 
 	public AbstractPkPersistenceService(Converter<T, E> converter, R repository) {
 		this.converter = converter;
@@ -29,6 +37,10 @@ public abstract class AbstractPkPersistenceService<T extends IdObject, C extends
 	
 	protected void doSave(T obj) {
 		
+	}
+	
+	protected String buildSearchQuery(SearchRequest searchRequest) {
+		throw new UnsupportedOperationException("search() operation is not supported.");
 	}
 
 	@Override
@@ -95,5 +107,12 @@ public abstract class AbstractPkPersistenceService<T extends IdObject, C extends
 			list = IteratorUtils.toList(iterable.iterator());
 		}
 		return list;
+	}
+	
+	@SuppressWarnings("all")
+	@Override
+	public List<T> search(SearchRequest searchRequest) {
+		Query query = entityManager.createQuery(buildSearchQuery(searchRequest));
+		return converter.convertFrom(query.getResultList());
 	}
 }

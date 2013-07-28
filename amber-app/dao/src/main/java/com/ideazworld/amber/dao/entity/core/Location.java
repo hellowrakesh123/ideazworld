@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.Type;
 
@@ -41,7 +42,8 @@ public class Location extends AbstractPkEntity {
 	private List<Item> items;
 
 	// bi-directional many-to-one association to User
-	@OneToMany(mappedBy = "location")
+	//@OneToMany(mappedBy = "location")
+	@Transient
 	private List<User> users;
 
 	public String getAddress() {

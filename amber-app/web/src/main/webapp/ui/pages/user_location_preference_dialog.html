@@ -1,0 +1,42 @@
+<div id="modal">
+	<div id="modal-heading">
+		Choose your City
+	</div>
+	<div id="modal-content">
+		<p>Please select the city where you want to localize the search, this will be saved as the preferred location and next time you login, we will already know.</p>
+		<div>
+			<select id="location-preference" data-placeholder="City" style="width: 200px;" class="chzn-select" onChange="saveUserLocationPreference()">
+				<option value=""></option>
+			</select>
+			<div id="buttons" style="display: inline">
+				<input type="submit" name="submit" id="submitbtn" class="submitbtn close" style="float: none; height: 25px; display: inline" value="Select" />
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	function saveUserLocationPreference() {
+		var location = document.getElementById("location-preference").value;
+		setCookie(USER_PREFERRED_LOCATION, location);
+	}
+	
+	function showUserLocationPreferenceDialog() {
+		var locationElement = document.getElementById("location-preference");
+		buildCountryStatesElement(locationElement);
+		var user_saved_location = getCookie(USER_PREFERRED_LOCATION);
+		user_saved_location = typeof user_saved_location != 'undefined' ? user_saved_location : null;
+		if(user_saved_location == null) {
+			$('#modal').reveal({ // The item which will be opened with reveal
+			  	animation: 'fade',                   // fade, fadeAndPop, none
+				animationspeed: 600,                       // how fast animations are
+				closeonbackgroundclick: false,              // if you click background will modal close?
+				dismissmodalclass: 'close'    // the class of a button or element that will close an open modal
+			});
+		}
+	}
+
+	function initUserLocationPreference() {
+		showUserLocationPreferenceDialog();
+		initChzn();
+	}
+</script>

@@ -1,3 +1,19 @@
+<script>
+	function search() {
+		var search_map = {};
+		var searchHint = document.getElementById("search-hint").value;
+		var simple_hints = new Array();
+		var simple_hint = "{\"key\":\"search-hint\",\"value\":\"" + searchHint + "\"}";
+		simple_hints.push(stringToJson(simple_hint));
+		search_map['simple-hints']=simple_hints;
+		try {
+			var method = "showSearchResults(search_map);";
+			eval(method);
+	    } catch (e) {
+	    	window.location.href = "home.jsp?" + jsonToString(search_map, 0);
+	    }
+	}
+</script>
 <div id="menucont">
 	<ul>
 		<li><a title="" href="home.jsp" class="active">Home</a></li>
@@ -7,8 +23,10 @@
 	</ul>
 </div>
 <div id="middlecont">
-	<ul>
-		<li>Search Your Book</li>
-		<li><input class="search_box" type="text" placeholder="Name of the book"><a href="#" title="search"><img style="margin-bottom: -1.6%; margin-left: -1%;" src="../images/search.png"></a></li>
-	</ul>
+	<form id="search-form">
+		<ul>
+			<li>Search Your Book</li>
+			<li><input id="search-hint" class="search_box" type="text" placeholder="Name of book, subject, author"><a href="javascript: search()" title="search"><img style="margin-bottom: -1.6%; margin-left: -1%;" src="../images/search.png"></a></li>
+		</ul>
+	</form>
 </div>

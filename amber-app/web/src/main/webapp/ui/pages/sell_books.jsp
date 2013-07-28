@@ -3,71 +3,6 @@
 <head>
 	<%@ include file="includes.html" %>
 	<script>
-		var states_map = {};
-		
-		function initLocality() {
-			var user_saved_location = getCookie(USER_PREFERRED_LOCATION);
-			user_saved_location = typeof user_saved_location != 'undefined' ? user_saved_location : null;
-			if(user_saved_location == null) {
-				return;
-			}
-			var states_map = getStatesMap();
-			var cityCodeArray = user_saved_location.split(",");
-			var state = cityCodeArray[0];
-			var city = cityCodeArray[1];
-			var cities = states_map[state]['cities'];
-			for(var i=0;i<cities.length;i++){
-				var cityObj = cities[i];
-				if(cityObj['city'] == city) {
-					var localityList = cityObj['localities'];
-					var localityElement = document.getElementById("locality");
-					if(localityList.length < 1) {
-						var cityName = city + " (Pincode - 000000)";
-						localityElement.appendChild(new Option(cityName, cityName, "", false));
-					} else {
-						for(var i=0;i<localityList.length;i++){
-							var locality = localityList[i];
-							var localityName = locality['Locality'] + " (Pincode - " + locality['Zipcode'] + ")";
-							localityElement.appendChild(new Option(localityName, locality['Locality'] + "," + locality['Zipcode'], "", false));
-						}	
-					}
-					break;
-				}
-			}
-		}
-		
-		function initCondition() {
-			var responseJson = getServiceResponse('types.item-condition');
-			var condition = document.getElementById("condition");
-			for(var index=0;index<responseJson.length;index++){
-				var obj = responseJson[index];
-				condition.appendChild(new Option(obj, obj, "", false));
-			}
-		}
-	
-		function initLanguages() {
-			var languages = stringToJson(getUrlApi(BASE_URL + "/data/books/language.json"));
-			var language = document.getElementById("language");
-			for(var index=0;index<languages.length;index++){
-				language.appendChild(new Option(languages[index], languages[index], "", false));
-			}
-		}
-	
-		function initCategory() {
-			var responseJson = getServiceResponse('metadata.category');
-			var category = document.getElementById("category_info");
-			for(var index=0;index<responseJson.length;index++){
-				var obj = responseJson[index];
-				var optGroup = document.createElement("optgroup");
-				optGroup.label = obj.name;
-				for(var i=0;i<obj.children.length;i++){
-					var val = obj.children[i];
-					optGroup.appendChild(new Option(val.name, obj.name + "," + val.id, "", false));
-				}
-				category.appendChild(optGroup);
-			}
-		}
-		
 		function createBookPost() {
 			var request_map = {};
 			var bookName = document.getElementById("book_name").value;
@@ -112,36 +47,24 @@
 		}
 		
 		function init() {
-			initCondition();
-			initLanguages();
-			initCategory();
-			initLocality();
+			var category = document.getElementById("category_info");
+			buildCategoryElement(category);
+			
+			var condition = document.getElementById("condition");
+			buildConditionElement(condition);
+			
+			var locality = document.getElementById("locality");
+			buildLocalityElement(locality);
+			
+			var language = document.getElementById("language");
+			buildLanguagesElement(language);
+			
 			initChzn();
-		}
-		
-		function initChzn() {
-			var config = {
-				'.chzn-select' : {},
-				'.chzn-select-deselect' : {
-					allow_single_deselect : true
-				},
-				'.chzn-select-no-single' : {
-					disable_search_threshold : 10
-				},
-				'.chzn-select-no-results' : {
-					no_results_text : 'Oops, nothing found!'
-				},
-				'.chzn-select-width' : {
-					width : "95%"
-				}
-			};
-			for ( var selector in config) {
-				$(selector).chosen(config[selector]);
-			}
 		}
 	</script>
 </head>
 <body onLoad="init()">
+	<%@ include file="user_location_preference_dialog.html" %>
 	<div id="container" class="clearfix">
 		<%@ include file="header.html" %>
 		<div id="maincont" class="clearfix">

@@ -4,6 +4,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.Type;
 
@@ -29,8 +30,9 @@ public class User extends AbstractPkEntity {
 	private boolean shareContact;
 
 	// bi-directional many-to-one association to Location
-	@ManyToOne(cascade = CascadeType.MERGE)
-	@JoinColumn(name = "location_id")
+//	@ManyToOne(cascade = CascadeType.MERGE)
+//	@JoinColumn(name = "location_id")
+	@Transient
 	private Location location;
 
 	public String getName() {
