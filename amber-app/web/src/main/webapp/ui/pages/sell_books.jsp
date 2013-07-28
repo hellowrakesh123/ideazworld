@@ -63,10 +63,6 @@
 				error['type']="text";
 				validationErrors.push(error);
 			}
-			if(validationErrors.size() > 0) {
-				var validationMessages = buildValidationMessages(validationErrors);
-				showMessage("warning", validationMessages);
-			}
 			request_map['name'] = bookName;
 			request_map['language'] = language;
 			request_map['description'] = description;
