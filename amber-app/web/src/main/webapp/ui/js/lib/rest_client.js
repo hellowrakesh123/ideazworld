@@ -42,7 +42,7 @@ function postServiceResponse(serviceId, data) {
 		    }
 		})
 		.fail(function(xhr, status, error) {
-			var method = api+"FailureHandler(data);";
+			var method = api+"FailureHandler(xhr, status, error);";
 			try {
 				eval(method);
 		    } catch (e) {

@@ -5,26 +5,82 @@
 	<script>
 		function createBookPost() {
 			var request_map = {};
+			var validationErrors = new Array();
 			var bookName = document.getElementById("book_name").value;
-			request_map['name'] = bookName;
-			var language = document.getElementById("language").value;
-			request_map['language'] = language;
 			var description = document.getElementById("description").value;
-			request_map['description'] = description;
+			var language = document.getElementById("language").value;
 			var categoryInfo = document.getElementById("category_info").value;
+			var expectedPrice = document.getElementById("expected_price").value;
+			var marketPrice = document.getElementById("market_price").value;
+			var itemCondition = document.getElementById("condition").value;
+			var localityInfo = document.getElementById("locality").value;
+			var address = document.getElementById("address").value;
+			if(bookName == "") {
+				var error = {};
+				error['field']="Name";
+				error['type']="text";
+				validationErrors.push(error);
+			}
+			if(description == "") {
+				var error = {};
+				error['field']="Description";
+				error['type']="text";
+				validationErrors.push(error);
+			}
+			if(language == "") {
+				var error = {};
+				error['field']="Language";
+				error['type']="select";
+				validationErrors.push(error);
+			}
+			if(categoryInfo == "") {
+				var error = {};
+				error['field']="Category";
+				error['type']="select";
+				validationErrors.push(error);
+			}
+			if(expectedPrice == "") {
+				var error = {};
+				error['field']="Expected Price";
+				error['type']="text";
+				validationErrors.push(error);
+			}
+			if(itemCondition == "") {
+				var error = {};
+				error['field']="Condition";
+				error['type']="select";
+				validationErrors.push(error);
+			}
+			if(localityInfo == "") {
+				var error = {};
+				error['field']="Locality";
+				error['type']="select";
+				validationErrors.push(error);
+			}
+			if(address == "") {
+				var error = {};
+				error['field']="Address";
+				error['type']="text";
+				validationErrors.push(error);
+			}
+			if(validationErrors.size() > 0) {
+				var validationMessages = buildValidationMessages(validationErrors);
+				showMessage("warning", validationMessages);
+			}
+			request_map['name'] = bookName;
+			request_map['language'] = language;
+			request_map['description'] = description;
 			var categoryArray = categoryInfo.split(",");
 			request_map['category'] = categoryArray[0];
 			request_map['sub-category'] = categoryArray[1];
-			var expectedPrice = document.getElementById("expected_price").value;
 			request_map['expected-price'] = expectedPrice;
-			var marketPrice = document.getElementById("market_price").value;
 			request_map['market-price'] = marketPrice;
-			var itemCondition = document.getElementById("condition").value;
 			request_map['item-condition'] = itemCondition;
 			var location_map = {};
 			var user_saved_location = getCookie(USER_PREFERRED_LOCATION);
 			user_saved_location = typeof user_saved_location != 'undefined' ? user_saved_location : null;
 			if(user_saved_location == null) {
+				showMessage("validation", "Please select location");
 				return;
 			}
 			var cityCodeArray = user_saved_location.split(",");
@@ -32,18 +88,31 @@
 			location_map['state'] = state;
 			var city = cityCodeArray[1];
 			location_map['city'] = city;
-			var localityInfo = document.getElementById("locality").value;
 			var localityArray = localityInfo.split(",");
 			var locality = localityArray[0];
 			location_map['locality'] = locality;
 			var zip = localityArray[1];
 			location_map['zip-code'] = zip;
-			var address = document.getElementById("address").value;
 			location_map['address'] = address;
 			var country = "INDIA";
 			location_map['country'] = country;
 			request_map['location'] = location_map;
 			postServiceResponse("books.save", jsonToString(request_map));
+		}
+		
+		function showMessage(type, message) {
+			var messageDiv=document.getElementById("messageDiv");
+			messageDiv.innerHTML=message;
+			messageDiv.className=type;
+			messageDiv.style.display="block";
+		}
+		
+		function saveSuccessHandler(response) {
+			
+		}
+		
+		function saveFailureHandler(response, status, message) {
+			
 		}
 		
 		function init() {
@@ -71,6 +140,7 @@
 			<h2>Your Book</h2>
 			<form id="book-form" method="post" action="#" class="hongkiat-form">
 				<div class="wrapping clearfix">
+					<div id="messageDiv" style="display: none"></div>
 					<section>
 						<select id="category_info" data-placeholder="Category" style="width: 200px;" class="chzn-select">
 							<option value=""></option>
