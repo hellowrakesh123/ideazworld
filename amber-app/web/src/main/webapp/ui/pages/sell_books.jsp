@@ -64,7 +64,6 @@
 	</script>
 </head>
 <body onLoad="init()">
-	<%@ include file="user_location_preference_dialog.html" %>
 	<div id="container" class="clearfix">
 		<%@ include file="header.html" %>
 		<div id="maincont" class="clearfix">

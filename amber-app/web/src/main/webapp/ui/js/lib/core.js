@@ -41,25 +41,6 @@ function sortJson(jsonObject, field) {
 	return jsonObject;
 }
 
-function getStatesMap(refresh) {
-	var states_map = window.STATES_MAP;
-	states_map = typeof states_map != 'undefined' ? states_map : null;
-	if(states_map == null || refresh) {
-		states_map = {};
-		var states = stringToJson(getUrlApi(BASE_URL + "/data/locales/country/india/all_states.json"));
-		for(var index=0;index<states.length;index++){
-			var state = states[index]['Name'];
-			state = state.trim();
-			state = state.replace(/\s/g, '_');
-			state = state.replace(/\*/g, '');
-			var cities = stringToJson(getUrlApi(BASE_URL + "/data/locales/country/india/" + state + ".json"));
-			states_map[state] = cities;
-		}
-		window.STATES_MAP = states_map;
-	}
-	return states_map;
-}
-
 function setCookie(c_name, value) {
     var exdate = new Date();
     exdate.setDate(exdate.getDate() + COOKIE_DAYS_VALIDITY);
