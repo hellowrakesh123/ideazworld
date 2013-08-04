@@ -91,7 +91,7 @@ function buildCategoryElement(element) {
 		optGroup.label = obj.name;
 		for(var i=0;i<obj.children.length;i++){
 			var val = obj.children[i];
-			optGroup.appendChild(new Option(val.name, obj.name + "," + val.id, "", false));
+			optGroup.appendChild(new Option(val.name, obj.name + "," + val.name, "", false));
 		}
 		element.appendChild(optGroup);
 	}
@@ -110,4 +110,12 @@ function buildConditionElement(element) {
 		var obj = responseJson[index];
 		element.appendChild(new Option(obj, obj, "", false));
 	}
+}
+
+function addNewLineElement(element, size) {
+	size = typeof size != 'undefined' ? size : 1;
+	for(var index=0;index<size;index++) {
+		element.appendChild(document.createElement("br"));
+	}
+	return element;
 }

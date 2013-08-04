@@ -21,7 +21,8 @@
 					<xsd:element name="expected-price" type="xsd:int" />
 					<xsd:element name="location" type="core:location" />
 					<xsd:element name="brand" type="brand" />
-					<xsd:element name="share-contact" type="xsd:boolean" />
+					<xsd:element name="share-contact-number" type="xsd:boolean" />
+					<xsd:element name="share-email" type="xsd:boolean" />
 					<xsd:element name="status" type="item-status-type" />
 					<xsd:element name="status-message" type="xsd:string" />
 					<xsd:element name="attachments" type="attachment" minOccurs="0" maxOccurs="unbounded" />

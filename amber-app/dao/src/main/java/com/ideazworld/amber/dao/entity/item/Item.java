@@ -46,12 +46,12 @@ public abstract class Item extends AbstractRefEntity {
 
 	private String subCategory;
 
-	private int expectedPrice;
+	private Integer expectedPrice;
 
 	@Enumerated(EnumType.STRING)
 	private ItemConditionType itemCondition;
 
-	private int marketPrice;
+	private Integer marketPrice;
 
 	@Enumerated(EnumType.STRING)
 	private ItemStatusType status;
@@ -59,7 +59,10 @@ public abstract class Item extends AbstractRefEntity {
 	private String statusMessage;
 
 	@Type(type = "org.hibernate.type.NumericBooleanType")
-	private boolean shareContact;
+	private boolean shareEmail;
+	
+	@Type(type = "org.hibernate.type.NumericBooleanType")
+	private boolean shareContactNumber;
 
 	// bi-directional many-to-one association to Attachment
 	@OneToMany(mappedBy = "item", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -111,11 +114,11 @@ public abstract class Item extends AbstractRefEntity {
 		this.subCategory = subCategory;
 	}
 
-	public int getExpectedPrice() {
+	public Integer getExpectedPrice() {
 		return expectedPrice;
 	}
 
-	public void setExpectedPrice(int expectedPrice) {
+	public void setExpectedPrice(Integer expectedPrice) {
 		this.expectedPrice = expectedPrice;
 	}
 
@@ -127,11 +130,11 @@ public abstract class Item extends AbstractRefEntity {
 		this.itemCondition = itemCondition;
 	}
 
-	public int getMarketPrice() {
+	public Integer getMarketPrice() {
 		return marketPrice;
 	}
 
-	public void setMarketPrice(int marketPrice) {
+	public void setMarketPrice(Integer marketPrice) {
 		this.marketPrice = marketPrice;
 	}
 
@@ -151,12 +154,20 @@ public abstract class Item extends AbstractRefEntity {
 		this.statusMessage = statusMessage;
 	}
 
-	public boolean isShareContact() {
-		return shareContact;
+	public boolean isShareEmail() {
+		return shareEmail;
 	}
 
-	public void setShareContact(boolean shareContact) {
-		this.shareContact = shareContact;
+	public void setShareEmail(boolean shareEmail) {
+		this.shareEmail = shareEmail;
+	}
+
+	public boolean isShareContactNumber() {
+		return shareContactNumber;
+	}
+
+	public void setShareContactNumber(boolean shareContactNumber) {
+		this.shareContactNumber = shareContactNumber;
 	}
 
 	public List<Attachment> getAttachments() {

@@ -15,11 +15,45 @@
 				var searchElement = document.createElement("li");
 				var linkElement = document.createElement("a");
 				linkElement.title = obj.name;
-				linkElement.href = "#";
+				linkElement.href = "javascript: showSelectedBook('" + obj['ref']['ref-id'] + "')";
 				linkElement.innerHTML = obj.name + " &nbsp;&nbsp;<span>(" + obj['item-condition'] + ")</span>";
 				searchElement.appendChild(linkElement);
 				searchResultsElement.appendChild(searchElement);
+				document.getElementById("mainleft").style.display = "block";
 			}
+		}
+		
+		function showSelectedBook(ref) {
+			var bookObj = getServiceResponse('books.ref', "/" + ref);
+			var mainContentDiv = document.getElementById("mainright");
+			mainContentDiv.innerHTML = "";
+			var bookDetailsDiv = document.createElement("div");
+			bookDetailsDiv.id = "book-details-div";
+			var wrapperDiv = document.createElement("div");
+			wrapperDiv.className = "wrapper";
+			var bookSummaryHTML = "<h3><a href=#>" + bookObj['name'] + "</a></h3>";
+			bookSummaryHTML = bookSummaryHTML + "<h4>Price: INR " + bookObj['expected-price'] + "</h4>";
+			bookSummaryHTML = bookSummaryHTML + "<p>";
+			bookSummaryHTML = bookSummaryHTML + "Subject: <strong>" + bookObj['category'] + " | " + bookObj['sub-category'] + "</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+			bookSummaryHTML = bookSummaryHTML + "Language: <strong>" + bookObj['language'] + "</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+			bookSummaryHTML = bookSummaryHTML + "</p>";
+			wrapperDiv.innerHTML = bookSummaryHTML;
+			bookDetailsDiv.appendChild(wrapperDiv);
+			var blockquote = document.createElement("blockquote");
+			blockquote.innerHTML = bookObj['description'];
+			bookDetailsDiv.appendChild(blockquote);
+			var sendMessageDiv = document.createElement("div");
+			sendMessageDiv.id = "send-message-div";
+			var textElement = document.createElement("span");
+			textElement.setAttribute("style", "color: #777; font-size: 12px;");
+			textElement.innerHTML = "Contact the seller";
+			sendMessageDiv.appendChild(textElement);
+			var figureElement = document.createElement("figure");
+			figureElement.setAttribute("style", "float: right; margin-right: -2%; margin-top: -2.5%;");
+			figureElement.innerHTML = "<a href='#'><img src='../images/button.png' /></a>";
+			sendMessageDiv.appendChild(figureElement);
+			bookDetailsDiv.appendChild(sendMessageDiv);
+			mainContentDiv.appendChild(bookDetailsDiv);
 		}
 		
 		function init() {
@@ -40,62 +74,14 @@
 		<%@ include file="header.html" %>
 		<div id="maincont" class="clearfix">
 			<div class="ic"></div>
-			<div id="mainleft" style="width: 370px">
-				<h3>Nullam blandit</h3>
-				<div>Vivamus mi arcu, lacinia scelerisque blandit nec, mattis non
-					nibh.</div>
+			<div id="mainleft" style="width: 370px;display: none">
+				<h3>Book search results</h3>
 				<div style="height: 500px; overflow-x: hidden; overflow-y: scroll;">
 					<ul id="book-search-results" class="sidemenu">
-						<!-- <li><a title="" href="#">SIDE LINK 1 &nbsp;&nbsp;<span>(used)</span></a></li>
-						<li><a title="" href="#">SIDE LINK 2 &nbsp;&nbsp;<span>(new)</span></a></li>
-						<li><a title="" href="#">SIDE LINK 3 &nbsp;&nbsp;<span>(used)</span></a></li>
-						<li><a title="" href="#">SIDE LINK 4 &nbsp;&nbsp;<span>(new)</span></a></li>
-						<li><a title="" href="#">SIDE LINK 5 &nbsp;&nbsp;<span>(new)</span></a></li>
-						<li><a title="" href="#">SIDE LINK 1 &nbsp;&nbsp;<span>(used)</span></a></li>
-						<li><a title="" href="#">SIDE LINK 2 &nbsp;&nbsp;<span>(new)</span></a></li>
-						<li><a title="" href="#">SIDE LINK 3 &nbsp;&nbsp;<span>(used)</span></a></li>
-						<li><a title="" href="#">SIDE LINK 4 &nbsp;&nbsp;<span>(used)</span></a></li>
-						<li><a title="" href="#">SIDE LINK 5 &nbsp;&nbsp;<span>(new)</span></a></li>
-						<li><a title="" href="#">SIDE LINK 1 &nbsp;&nbsp;<span>(used)</span></a></li>
-						<li><a title="" href="#">SIDE LINK 2 &nbsp;&nbsp;<span>(used)</span></a></li>
-						<li><a title="" href="#">SIDE LINK 3 &nbsp;&nbsp;<span>(new)</span></a></li>
-						<li><a title="" href="#">SIDE LINK 4 &nbsp;&nbsp;<span>(used)</span></a></li>
-						<li><a title="" href="#">SIDE LINK 5 &nbsp;&nbsp;<span>(new)</span></a></li> -->
 					</ul>
 				</div>
 			</div>
 			<div id="mainright">
-				<div id="page_comingSoon">
-					<div class="wrapper">
-						<h3>
-							<a href="#">Book Title</a>
-						</h3>
-						<h4>Price: 200rs.</h4>
-						<p>
-							Author Name: <strong>xyz</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							Edition: <strong>2012</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							Condition: <strong>New</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							Place: <strong>Delhi</strong>
-						</p>
-					</div>
-				</div>
-				<blockquote>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus mi
-					arcu, lacinia scelerisque blandit nec, mattis non nibh. Curabitur
-					quis urna at massa placerat auctor. Quisque et mauris sapien, a
-					consectetur nulla. Cum sociis natoque penatibus et magnis dis
-					parturient montes, nascetur ridiculus mus. Nullam pellentesque,<br><br>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus mi
-							arcu, lacinia scelerisque blandit nec, mattis non nibh. Curabitur
-							quis urna at massa placerat auctor.<br><br>
-				</blockquote>
-				<p>
-					<span style="color: #777; font-size: 12px;">Interested person
-						please contact by message</span>
-					<figure style="float: right; margin-right: -2%; margin-top: -6.5%;">
-						<a href="#"><img src="../images/button.png" /></a>
-					</figure>
-				</p>
 			</div>
 		</div>
 	</div>

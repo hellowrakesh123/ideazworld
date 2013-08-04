@@ -1,12 +1,7 @@
 package com.ideazworld.amber.dao.entity.core;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
-
-import org.hibernate.annotations.Type;
 
 import com.ideazworld.amber.dao.entity.AbstractPkEntity;
 
@@ -25,9 +20,6 @@ public class User extends AbstractPkEntity {
 	private String sex;
 	
 	private int contactNumber;
-
-	@Type(type = "org.hibernate.type.NumericBooleanType")
-	private boolean shareContact;
 
 	// bi-directional many-to-one association to Location
 //	@ManyToOne(cascade = CascadeType.MERGE)
@@ -65,14 +57,6 @@ public class User extends AbstractPkEntity {
 
 	public void setContactNumber(int contactNumber) {
 		this.contactNumber = contactNumber;
-	}
-
-	public boolean isShareContact() {
-		return shareContact;
-	}
-
-	public void setShareContact(boolean shareContact) {
-		this.shareContact = shareContact;
 	}
 
 	public Location getLocation() {

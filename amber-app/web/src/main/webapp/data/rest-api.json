@@ -38,6 +38,10 @@
 			"search" : {
 				"path" : "/search",
 				"method" : "post"
+			},
+			"ref" : {
+				"path" : "/ref",
+				"method" : "get"
 			}
 		}
 	}

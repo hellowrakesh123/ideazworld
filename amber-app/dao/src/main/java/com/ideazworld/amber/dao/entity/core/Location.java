@@ -26,8 +26,6 @@ public class Location extends AbstractPkEntity {
 
 	private String country;
 
-	private String landMark;
-
 	private String locality;
 
 	private String state;
@@ -68,14 +66,6 @@ public class Location extends AbstractPkEntity {
 
 	public void setCountry(String country) {
 		this.country = country;
-	}
-
-	public String getLandMark() {
-		return landMark;
-	}
-
-	public void setLandMark(String landMark) {
-		this.landMark = landMark;
 	}
 
 	public String getLocality() {
